@@ -1,0 +1,18 @@
+.comment-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-comment-container {
+    border: 1px solid black;
+    width: 30em;
+    margin: .5em;
+    padding: .5em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.commenter {
+    padding: 0;
+    margin: .3em;
+}

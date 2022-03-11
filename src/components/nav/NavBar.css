@@ -1,0 +1,53 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.navbar__item {
+
+    list-style-type: none;
+    
+}
+
+.navbar__link {
+    display: block;
+    width: 8rem;
+    height: 2rem;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none;
+    margin: 1em;
+    color: rgb(65, 62, 62);
+    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.app-title {
+    text-align: center;
+}
+
+#logout {
+    height: 1em;
+    width: 3em;
+}
+.logout-search-container {
+    display: flex;
+    justify-content: space-between;
+}

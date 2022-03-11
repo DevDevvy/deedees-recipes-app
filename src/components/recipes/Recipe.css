@@ -1,0 +1,12 @@
+.ingredients-and-steps-container {
+    display: flex;
+    align-content: space-between;
+
+}
+
+.ingredients {
+    padding: .5em;
+    margin: 1em;
+}
+
+

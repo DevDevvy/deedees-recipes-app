@@ -1,0 +1,100 @@
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.home-page-title {
+    border: 1px solid black;
+    padding: 1em 8em;
+    box-shadow: inset 0.3rem 0.1rem 0.3rem rgb(172 169 169), -0.2rem -0.3rem 0.5rem rgb(255 255 255);
+}
+.favorites-container {
+    border: 1px solid black;
+    margin: 2em;
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow:  0.5rem 0.2rem 0.9rem rgb(172 169 169), -0.2rem -0.3rem 0.5rem rgb(255 255 255);
+}
+.favorites-and-recipes {
+    display: flex;
+    
+}
+
+.recipes-container {
+    border: 1px solid black;
+    margin: 2em;
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow:  0.5rem 0.2rem 0.9rem rgb(172 169 169), -0.2rem -0.3rem 0.5rem rgb(255 255 255);
+}
+
+.recipes-edit {
+    display: flex;
+
+    align-items: center;
+}
+
+.edit {
+    display: block;
+    width: 4rem;
+    height: 1rem;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none;
+    border: antiquewhite;
+    border-radius: 5px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    margin: 1em;
+    color: rgb(62, 65, 65);
+    box-shadow: 0.2rem 0.2rem 0.4rem rgb(143, 165, 173), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+.delete {
+    display: block;
+    width: 4rem;
+    height: 1rem;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none;
+    border: antiquewhite;
+    border-radius: 5px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    margin: 1em;
+    color: rgb(66, 44, 44);
+    box-shadow: 0.2rem 0.2rem 0.4rem rgb(168, 148, 148), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+
+h5 {
+    font-size: 1em;
+}
+a {
+    text-decoration: none;
+    color: rgb(48, 33, 32);
+    font-weight: bold;
+}
