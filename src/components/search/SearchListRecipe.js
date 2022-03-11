@@ -3,25 +3,27 @@ import { SearchBar } from "./Search";
 import { Link } from "react-router-dom";
 import hollow from "../recipes/hollow.svg"
 import solid from "../recipes/solid.svg"
+import { getAllLikes, getAllRecipes } from "../../ApiManager";
 
 export const RecipeListSearch = (props) => {
     const [recipes, setRecipes] = useState([])
     const [likesArray, setLikes] = useState([])
+
+
     useEffect(
         () => {
-            fetch("http://localhost:8088/recipes?_expand=user&_embed=steps")
-                .then(res => res.json())
+            getAllRecipes()
                 .then((data) => {
                     // set recipe state with data from API
                     setRecipes(data)
+                    
                 })
             },
         []
     )
     useEffect(
         () => {
-            fetch("http://localhost:8088/likes?_expand=user")
-                .then(res => res.json())
+            getAllLikes()
                 .then((data) => {
                     // set recipe state with data from API
                     setLikes(data)
@@ -29,7 +31,9 @@ export const RecipeListSearch = (props) => {
         },
         []
     )
-        // function to send new like object into API
+
+
+        // function to send new "like" object into API
     const likeRecipe = (id) => {
         // make new like object
         const newLike = {
@@ -45,10 +49,7 @@ export const RecipeListSearch = (props) => {
         }
         return fetch("http://localhost:8088/likes", fetchOption)
                 .then(res => res.json())
-                .then((data) => {
-                    // set recipe state with data from API
-                    update()
-                })
+                .then(update)
         
     }
 
@@ -73,7 +74,7 @@ export const RecipeListSearch = (props) => {
                 <h3>Search Recipes</h3>
             </div>
             <section className="recipe-container">
-            {
+            { 
                 recipes.map(
                     (recipe) => {
                         const foundUserId = parseInt(localStorage.getItem("recipe_user"))
@@ -96,6 +97,7 @@ export const RecipeListSearch = (props) => {
                             src={hollow} alt="hollow heart"
                             onClick={()=> likeRecipe(recipe.id)}/>
                         }
+
                         const itemName = recipe.name.toLowerCase()
                         const inputLower = props.searchInput.toLowerCase()
                         if (itemName.includes(inputLower)) {
@@ -122,10 +124,9 @@ export const RecipeListSearch = (props) => {
                                         </div>
                                     </article>
                                 </section>
-
-                                
                             </div>
-                        }}
+                        } 
+                    }
                     )
                 }
                 </section>

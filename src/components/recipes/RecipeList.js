@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./RecipeList.css"
 import hollow from "./hollow.svg"
 import solid from "./solid.svg"
-import { getAllLikes, getAllRecipesWithSteps } from "../../ApiManager";
+import { apiDelete, getAllLikes, getAllRecipesWithSteps } from "../../ApiManager";
 
 // create a function that lists out all the recipes in XML
 export const RecipeList = () => {
@@ -59,24 +59,19 @@ export const RecipeList = () => {
         
     }
 
-
+    // unlike recipe
     const unlikeRecipe = (id) => {
-        fetch(`http://localhost:8088/likes/${id}`, {
-            method: "DELETE"
-        })
+        apiDelete()
         .then(update)
     }
+    // update "likes" state
     const update = () => {
-        return fetch("http://localhost:8088/likes?_expand=user")
-            .then(res => res.json())
+        getAllLikes()
             .then((data) => {
                 setLikes(data)
             })
     }
-    // const initialValue = 0;
-    // const sumWithInitial = recipes.steps.minutes.reduce(
-    //     (previous, current) => previous + current, initialValue
-    // )
+
     return (
         <>
         <section className="main-container">

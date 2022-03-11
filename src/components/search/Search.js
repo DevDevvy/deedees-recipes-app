@@ -7,7 +7,7 @@ import { RecipeListSearch } from "./SearchListRecipe";
 
 export const SearchBar = (props) => {
     const [searchInput, setSearchInput] = useState("")
-    
+    // const [ingredientsSearch, setIngredientsSearch] = useState("")
     const RecipeSearch = () => {
 
         return (
@@ -17,7 +17,7 @@ export const SearchBar = (props) => {
                         <div className="form-group">
                             
                             <input
-                                required autoFocus
+                                
                                 type="text"
                                 className="form-control"
                                 placeholder="Search Recipe..."
@@ -27,16 +27,43 @@ export const SearchBar = (props) => {
                                 }} />
                         </div>
                     </fieldset>
+                    
                 </form>
+                
             </>
         )
     }
-    
+    // const IngredientSearch = () => {
+
+    //     return (
+    //         <>
+    //             <form className="SearchBar">
+    //                 <fieldset>
+    //                     <div className="form-group">
+                            
+    //                         <input
+                                
+    //                             type="text"
+    //                             className="form-control"
+    //                             placeholder="Search Recipe..."
+    //                             value={ingredientsSearch}
+    //                             onChange={(evt) => {
+    //                                 setIngredientsSearch(evt.target.value)
+    //                             }} />
+    //                     </div>
+    //                 </fieldset>
+                    
+    //             </form>
+                
+    //         </>
+    //     )
+    // }
     
     
     return (
         <>
             <RecipeSearch/>
+            {/* <IngredientSearch ingredientsSearch = {ingredientsSearch} /> */}
             <RecipeListSearch searchInput={searchInput} />
         </>
         )

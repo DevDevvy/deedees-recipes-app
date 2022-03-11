@@ -3,7 +3,7 @@ import { useState, useEffect} from "react"
 import "./Comments.css"
 import { useParams } from "react-router"
 
-export const Comments = ({comments, setComments, users, setUsers}) => {
+export const Comments = ({comments, users}) => {
 
     const {recipeId} = useParams()
     const filteredComments = comments.filter(comment => comment.recipeId === parseInt(recipeId))

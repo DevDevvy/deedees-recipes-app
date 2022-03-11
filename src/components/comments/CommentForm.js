@@ -37,6 +37,7 @@ export const CommentForm = ({setComments}) => {
         setComment(copy)
         update()
     }
+    // updates comments state
     const update = () => {
         getAllComments()
             .then((data) => {

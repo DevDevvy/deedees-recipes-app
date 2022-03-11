@@ -26,33 +26,16 @@ export const Recipe = () => {
     )
     useEffect(
         () => {
-            getAllSteps()
-                .then((data) => {
-                    setSteps(data)})
-                
-        },
-        []
-    )
-    useEffect(
-        () => {
-            getAllIngredients()
-                .then((data) => {
-                    // set ingredients state with data from API
-                    setIngredients(data)
-                })
-        },
-        []
-    )
-    useEffect(
-        () => {
             getAllUsers()
-                .then((data) => {
-                    // set step state with data from API
-                    setUsers(data)
-                })
+                .then((data) => {setUsers(data)})
+                .then(getAllSteps)
+                .then((data) => {setSteps(data)})
+                .then(getAllIngredients)
+                .then((data) => {setIngredients(data)})
         },
         []
     )
+
     useEffect(
         () => {
             getAllComments()
