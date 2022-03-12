@@ -57,7 +57,7 @@ export const HomePage = () => {
         <h2 className="home-page-title">VITTLES</h2>
         <article className="favorites-and-recipes">
             <section className="favorites-container">
-                <h4>FAVORITES</h4>
+                <h4 className="fave">FAVORITES</h4>
                 <div className="favorite-buttons-container">
                     {/* map of likes */}
                     {
@@ -75,8 +75,10 @@ export const HomePage = () => {
                         userRecipes.map((recipe) => {
                             return (<div className="recipes-edit" key={recipe.id}>
                             <Link key={`recipe-${recipe.id}`} to={`recipes/${recipe.id}`}>{recipe.name}</Link>
-                            <button className="edit" key={`button--${recipe.id}`} onClick={()=> history.push(`/edit/${recipe.id}`)}>Edit</button>
-                            <button className="delete" key={`delete-button--${recipe.id}`} onClick={()=>deleteRecipe(recipe.id)}>Delete</button>
+                            <div className="buttons-container" key={`buttons--${recipe.id}`} >
+                                <button className="edit" key={`button--${recipe.id}`} onClick={()=> history.push(`/edit/${recipe.id}`)}>Edit</button>
+                                <button className="delete" key={`delete-button--${recipe.id}`} onClick={()=>deleteRecipe(recipe.id)}>Delete</button>
+                            </div>
                             </div>
                             )
                         })

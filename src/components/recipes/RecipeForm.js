@@ -127,9 +127,9 @@ export const RecipeForm = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="memory-container">
                 {/* ------recipe memory------------ */}
-                <div className="form-group-recipe">
+                <div className="form-group-memory">
                     <h3 className="memory-title">Memory</h3>
                     <textarea
                         required autoFocus
