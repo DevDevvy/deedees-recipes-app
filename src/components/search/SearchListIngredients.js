@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { SearchBar } from "./Search";
 import { Link } from "react-router-dom";
-import hollow from "../recipes/hollow.svg"
-import solid from "../recipes/solid.svg"
 import { getAllIngredients, getAllLikes, getAllRecipes } from "../../ApiManager";
 
 export const SearchListIngredients = (props) => {
     const [recipes, setRecipes] = useState([])
-    const [likesArray, setLikes] = useState([])
     const [ingredients, setIngredients] = useState([])
-    useEffect(
-        () => {
-            getAllIngredients()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setIngredients(data)
-                })
-        },
-        []
-    )
     useEffect(
         () => {
             getAllRecipes()
@@ -32,51 +19,16 @@ export const SearchListIngredients = (props) => {
     )
     useEffect(
         () => {
-            getAllLikes()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setLikes(data)
-                })
+            getAllIngredients()
+                .then((data) => {setIngredients(data)})
+                
         },
         []
     )
     
 
 
-        // function to send new "like" object into API
-    const likeRecipe = (id) => {
-        // make new like object
-        const newLike = {
-            recipeId: id,
-            userId: parseInt(localStorage.getItem("recipe_user")),
-        }
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(newLike)
-        }
-        return fetch("http://localhost:8088/likes", fetchOption)
-                .then(res => res.json())
-                .then(update)
-        
-    }
 
-
-    const unlikeRecipe = (id) => {
-        fetch(`http://localhost:8088/likes/${id}`, {
-            method: "DELETE"
-        })
-        .then(update)
-    }
-    const update = () => {
-        return fetch("http://localhost:8088/likes?_expand=user")
-            .then(res => res.json())
-            .then((data) => {
-                setLikes(data)
-            })
-    }
     return (
         <>
         <section className="main-container">
@@ -85,63 +37,36 @@ export const SearchListIngredients = (props) => {
             </div>
             <section className="recipe-container">
             { 
-                recipes.map(
-                    (recipe) => {
-                        const foundUserId = parseInt(localStorage.getItem("recipe_user"))
-                        let liked = ``
-                        // find if there is a like for this recipe
-                        const foundLike = likesArray.find(like => like.recipeId === recipe.id && like.userId === foundUserId )
-                        // switches between liked and unliked images
-                        if (foundLike !== undefined) {
-                            liked = 
-                            <img className="favorite-button" 
-                            id={`unfavorite--${recipe.id}`} 
-                            src={solid} alt="solid heart"
-                            onClick={()=> unlikeRecipe(foundLike.id)}/>
-                        } else {
+                ingredients.map(
+                    (ingredient) => {
+                        const name = ingredient.name.toLowerCase()
+                        const inputLower = props.searchInput.toLowerCase()
+                        const foundRecipe = recipes.find(recipe => recipe.id === ingredient.recipeId)
+                        const ingredientArray = ingredients.filter(ingredient => ingredient.recipeId === foundRecipe.id)
+                        if (name.includes(inputLower)) {
                             
-                            liked = 
-                            <img className="favorite-button" 
-                            id={`favorite--${recipe.id}`} 
-                            src={hollow} alt="hollow heart"
-                            onClick={()=> likeRecipe(recipe.id)}/>
-                        }
-                        const foundIngredients = ingredients.filter(ingredient => ingredient.recipeId === recipe.id)
-                        debugger
-                        
-                        for (const ingredient of foundIngredients){
-                            const name = ingredient.name.toLowerCase()
-                            const inputLower = props.ingredientsSearch.toLowerCase()
-                            if (name.includes(inputLower)) {
-                        
-                                return <div key={`recipe--${recipe.id}`} className="recipe-div">
-                                        {/* link to recipe page */}
-                                        <Link to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >
-                                            {/* title */}
-                                        <h4 className="post-title">{recipe.name} by {recipe.user.name}</h4></Link>
-                                        {/* image */}
-                                        <section className="image-container">
-                                            <img className="post-image" src={recipe.photo} alt="Photo of Food" />
-                                        </section>
-                                        {/* story */}
-                                        <section className="story-conatiner">
-                                            <article className="story">
-                                                <h3>Story/Memory:</h3>
-                                                {recipe.memory}
-                                                <div className="postButtons">
-                                                    <div id="favoriteButton">
-                                                        {liked}
-                                                        
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </section>
-                                    </div>
-                                } 
+                            return <div key={`ingredient--${ingredient.id}`} className="recipe-div">
+                                    
+                                    <Link to={`/recipes/${foundRecipe.id}`} key={`ingredient--${ingredient.id}`} >
+                                        {/* title */}
+                                    <h4 className="post-title">{foundRecipe.name}</h4></Link>
+                                    <h5>Your search found:"{ingredient.name}"</h5>
+                                    <ul>
+                                    {ingredientArray.map(ingredient => {
+                                        return <li key={ingredient.id}>{ingredient.name} ({ingredient.amount})</li>
+                                    })}
+                                    </ul>
+                                    {/* image */}
+                                    <section className="image-container">
+                                        <img className="post-image" src={foundRecipe.photo} alt="Photo of Food" />
+                                    </section>
+                                    
+                                </div>
+                            } 
                         }
 
                         
-                    }
+                    
                     )
                 }
                 </section>
