@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import { SearchListIngredients } from "./SearchListIngredients";
 import { RecipeListSearch } from "./SearchListRecipe";
-
+import "./Search.css"
 
 
 
 
 export const SearchBar = (props) => {
     const [searchInput, setSearchInput] = useState("")
-    const [ingredientsSearch, setIngredientsSearch] = useState("")
-    const [radios, setRadios] = useState([])
     const [recipeView, setRecipeView] = useState(true)
-    
-    
-    
+
+    const items =[
+        {label: "Recipes", value: "recipes"},
+        {label: "Ingredients", value: "ingredients"},
+    ]
+
     const RecipeSearch = () => {
 
         return (
             <>
+            
                 <form className="SearchBar">
                     <fieldset>
                         <div className="form-group">
                             
                             <input
-                                
+                                autoFocus
                                 type="text"
-                                className="form-control"
-                                placeholder="Search Recipe..."
+                                className="search-control"
+                                placeholder="Search here..."
+                                key="recipe-search"
                                 value={searchInput}
                                 onChange={(evt) => {
                                     setSearchInput(evt.target.value)
@@ -39,48 +43,29 @@ export const SearchBar = (props) => {
             </>
         )
     }
-    const IngredientSearch = () => {
 
-        return (
-            <>
-                <form className="SearchBar">
-                    <fieldset>
-                        <div className="form-group">
-                            
-                            <input
-                                
-                                type="text"
-                                className="form-control"
-                                placeholder="Search Recipe..."
-                                value={ingredientsSearch}
-                                onChange={(evt) => {
-                                    setIngredientsSearch(evt.target.value)
-                                }} />
-                        </div>
-                    </fieldset>
-                    
-                </form>
-                
-            </>
-        )
-    }
+
     
     const DropDown = () => {
-        return <div className="radio-container">
-            <select>
-                <option value="recipe" onChange={setRecipeView(true)}>Recipes</option>
-                <option value="ingredients" onChange={setRecipeView(false)}>Ingredients</option>
-            </select>
+        
+        return <div className="selector">
+            <Select options={items} onChange={()=>setRecipeView(!recipeView)}/>
         </div>
     }
-    
-    
     return (
         <>
+            <div className="search-container">
             <DropDown/>
-            {/* <RecipeSearch/> */}
-            {/* <SearchListIngredients ingredientsSearch={ingredientsSearch}/> */}
-            <RecipeListSearch searchInput={searchInput} />
+            <RecipeSearch />
+            </div>
+            {/* <SearchListIngredients searchInput={searchInput}/> */}
+            {
+                recipeView ? 
+                <RecipeListSearch searchInput={searchInput} /> 
+                : 
+                <SearchListIngredients searchInput={searchInput}/>
+            }
+            {/* <RecipeListSearch searchInput={searchInput} /> */}
         </>
         )
 }

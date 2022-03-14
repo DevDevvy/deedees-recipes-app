@@ -10,8 +10,12 @@
 
 h3 {
     text-align: center;
+    color: rgb(73, 42, 39);
 }
-
+h2 {
+    color: rgb(73, 42, 39);
+    text-align: center;
+}
 .recipe-form {
     display: flex;
     flex-direction: column;

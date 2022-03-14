@@ -65,3 +65,7 @@
     height: auto;
     margin-left: 3em;
 }
+
+.navbar__link {
+    color: rgb(77, 40, 15);
+}
