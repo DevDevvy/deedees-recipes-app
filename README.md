@@ -70,7 +70,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-<img src="images/deedee-screenshot.png" height="600" width="auto"/>
+<img src="images/deedee-screenshot.png" height="auto" width="auto"/>
 </div>
 
 
