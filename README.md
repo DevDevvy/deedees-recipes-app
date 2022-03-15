@@ -26,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/DevDevvy/deedees-recipes-app">
-    <img src="images/deedees-recipes-logo.png" alt="Logo" width="auto" height="auto">
+    <img src="images/deedees-recipes-logo.png" alt="Logo" width="800" height="auto">
   </a>
 
 <h3 align="center">DeeDee's Recipes</h3>
