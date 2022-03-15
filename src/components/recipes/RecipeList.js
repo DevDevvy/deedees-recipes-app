@@ -6,6 +6,9 @@ import hollow from "./hollow.svg"
 import solid from "./solid.svg"
 import { apiDelete, getAllLikes, getAllRecipesWithSteps } from "../../ApiManager";
 
+import AOS from 'aos'
+import "aos/dist/aos.css"
+
 // create a function that lists out all the recipes in XML
 export const RecipeList = () => {
     
@@ -33,6 +36,14 @@ export const RecipeList = () => {
                     // set recipe state with data from API
                     setLikes(data)
                 })
+        },
+        []
+    )
+
+    useEffect(
+        () => {
+            AOS.init({duration: 2000})
+            AOS.refresh()
         },
         []
     )
@@ -103,15 +114,15 @@ export const RecipeList = () => {
                             onClick={()=> likeRecipe(recipe.id)}/>
                         }
                         
-                        return <div key={`recipe--${recipe.id}`} className="recipe-div">
+                        return <div data-aos="fade-up" key={`recipe--${recipe.id}`} className="recipe-div">
                                 {/* link to recipe page */}
-                                <Link to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >
+                                <Link data-aos="slide-right" to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >
                                     {/* title */}
                                 <h4 className="post-title">{recipe.name} by {recipe.user.name}</h4></Link>
                                 {/* image */}
-                                <section className="image-container">
-                                    <img className="post-image" src={recipe.photo} alt="Photo of Food" />
-                                </section>
+                                <div  data-aos="slide-left" className="image-container">
+                                    <img  className="post-image"  src={recipe.photo} alt="Photo of Food" />
+                                </div>
                                 {/* story */}
                                 <section className="story-conatiner">
                                     <article className="story">
