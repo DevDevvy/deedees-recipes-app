@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { getAllComments, getAllIngredients, getAllSteps, getAllUsers, getUserRecipe } from "../../ApiManager";
 import { CommentForm } from "../comments/CommentForm";
 import { Comments } from "../comments/Comments";
+import { ForkedRecipeList } from "../forked/ForkedRecipe";
 import "./Recipe.css"
 // create a function that lists out all the recipes in XML
 export const Recipe = () => {
@@ -13,6 +15,7 @@ export const Recipe = () => {
     const [steps, setSteps] = useState([])
     const [ingredients, setIngredients] =useState([])
     const {recipeId} = useParams()
+    
 
     useEffect(
         () => {
@@ -46,7 +49,7 @@ export const Recipe = () => {
         },
         []
     )
-    
+
     // get list of ingredients that match recipe id
     const list = ingredients.filter((ingredient) => {
         return parseInt(ingredient.recipeId) === parseInt(recipeId)
@@ -103,18 +106,28 @@ export const Recipe = () => {
                         <h3>Story/Memory:</h3>
                         {recipe.memory}
                         </article>
+                        <section className="fork-container">
+                            <h3><em>Have a different version?</em></h3>
+                            <Link to={`/fork/${recipe.id}`} key={`recipe--${recipe.id}`} >
+                            <button className="fork-button">Click Here to Fork Recipe</button></Link>
+                        </section>
                     </section>
                         <CommentForm
-                        setComments = {setComments}
-                        comments = {comments}
-                        users = {users}
-                        setUsers = {setUsers}/>
+                            setComments = {setComments}
+                            comments = {comments}
+                            users = {users}
+                            setUsers = {setUsers}/>
                         <Comments
-                        setComments = {setComments}
-                        comments = {comments}
-                        users = {users}
-                        setUsers = {setUsers}/>
+                            setComments = {setComments}
+                            comments = {comments}
+                            users = {users}
+                            setUsers = {setUsers}/>
                     </div>
+            </section>
+            <section className="forked-recipe-list">
+                
+                <ForkedRecipeList
+                users = {users}/>
             </section>
         </>
     )

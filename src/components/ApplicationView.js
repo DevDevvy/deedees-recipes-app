@@ -7,7 +7,7 @@ import { HomePage } from "./user/HomePage"
 import { EditRecipe } from "./user/EditRecipe"
 import { Redirect } from "react-router"
 import {SearchBar} from "./search/Search"
-
+import { ForkRecipe } from "./user/ForkRecipe"
 export const ApplicationView = () => {
     return (
         <>
@@ -28,6 +28,9 @@ export const ApplicationView = () => {
             </Route>
             <Route exact path="/edit/:recipeId(\d+)">
                 <EditRecipe />
+            </Route>
+            <Route exact path="/fork/:recipeId(\d+)">
+                <ForkRecipe />
             </Route>
             <Route exact path="/search">
                 <SearchBar />

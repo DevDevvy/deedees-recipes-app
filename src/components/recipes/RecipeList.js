@@ -72,7 +72,7 @@ export const RecipeList = () => {
 
     // unlike recipe
     const unlikeRecipe = (id) => {
-        apiDelete()
+        apiDelete(id)
         .then(update)
     }
     // update "likes" state

@@ -26,6 +26,7 @@ export const EditRecipe = () => {
         },
         [recipeId]
     )
+    
     const editRecipe = (id) => {
         // create recipe object with values from form 
         const editRecipe = {
@@ -100,7 +101,7 @@ export const EditRecipe = () => {
     return (
         <>
             <form className="recipe-form">
-            <h2 className="recipeForm__title">Edit Recipe Memory</h2>
+            <h2 className="recipeForm__title">Edit Recipe</h2>
             <fieldset>
                 {/* ------recipe memory------------ */}
                 <div className="form-group-recipe">
@@ -239,7 +240,7 @@ export const EditRecipe = () => {
             </fieldset>
             
             <button type="button" className="btn btn-primary" id="save-recipe" onClick={()=> editRecipe(recipeId)}>
-                Edit Memory
+                Edit Recipe
             </button>
         </form>
         </>

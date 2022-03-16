@@ -1,5 +1,4 @@
-import { getAllComments, getAllUsers } from "../../ApiManager"
-import { useState, useEffect} from "react"
+
 import "./Comments.css"
 import { useParams } from "react-router"
 
