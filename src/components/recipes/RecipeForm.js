@@ -150,7 +150,7 @@ export const RecipeForm = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            <fieldset className="recipe-photo">
                 {/* --------recipe photo-------- */}
                 <div className="form-group-recipe">
                     <label htmlFor="photo"><h3>Photo</h3></label>
@@ -184,7 +184,7 @@ export const RecipeForm = () => {
                     />
             </div>
             {/* --------------ingredients container-------------- */}
-            <div className="ingredients-container">
+            <div className="steps-container">
                 <h3 className="steps-and-ingredients-labels">INGREDIENTS</h3>
                         <Ingredients
                             ingredients = {ingredients}

@@ -16,7 +16,7 @@ export const NavBar = () => {
                     }}>Logout</Link>
         </div>
         
-        <img src={logo} alt="deedees-logo" id="logo"/>
+        <h1 className="app-title">DeeDee's Recipes</h1>
         
                     
         <ul className="navbar">

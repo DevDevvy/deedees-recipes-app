@@ -27,13 +27,14 @@ export const Ingredients = (props) => {
 
         
     return <section>
-            <fieldset>
+            <fieldset className="outer-container">
                 { inputFields.map((inputField, index) => (
                     <div className="ingredients-inner-container" key={index}>
-                        
+                        <div className="input-container">
                         {/* --------ingredient -------- */}
                         
                             {/* <label htmlFor="ingredient 1">Ingredient 1:</label> */}
+                            
                             <input
                                 required 
                                 type="text"
@@ -98,13 +99,16 @@ export const Ingredients = (props) => {
                                     }
                                 } 
                                 />
+                                </div>
                                 {/* add/delete field buttons */}
-                                <button className="ingredient-add-step"
+                                <div className="ing-buttons">
+                                <button className="add-step"
                                     onClick={() => handleAddFields()}
                                 >+</button>
-                                <button className="ingredient-delete-step"
+                                <button className="delete-step"
                                     onClick={() => handleDeleteFields(index)}
                                 >-</button>
+                                </div>
                     </div>
                 ))}
             </fieldset>
