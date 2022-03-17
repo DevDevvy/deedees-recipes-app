@@ -12,8 +12,8 @@ export const SearchBar = (props) => {
     const [recipeView, setRecipeView] = useState(true)
 
     const items =[
-        {label: "Recipes", value: "recipes"},
-        {label: "Ingredients", value: "ingredients"},
+        {label: "Recipes", value: "recipes", hasValue: true},
+        {label: "Ingredients", value: "ingredients", hasValue: false},
     ]
 
     const RecipeSearch = () => {
@@ -44,12 +44,17 @@ export const SearchBar = (props) => {
         )
     }
 
-
+    const setView = (e) => {
+        // debugger
+        if (recipeView !== parseInt(e.hasValue)) {
+            setRecipeView(e.hasValue)
+        } 
+    }
     
     const DropDown = () => {
         
         return <div className="selector">
-            <Select options={items} onChange={()=>setRecipeView(!recipeView)}/>
+            <Select options={items} value={items.value} onChange={setView}/>
         </div>
     }
     return (

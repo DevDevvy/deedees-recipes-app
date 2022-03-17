@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./RecipeList.css"
 import hollow from "./hollow.svg"
 import solid from "./solid.svg"
-import { apiDelete, getAllLikes, getAllRecipesWithSteps } from "../../ApiManager";
+import { apiDelete, getAllLikes, getAllRecipesWithSteps, getAllSteps } from "../../ApiManager";
 
 import AOS from 'aos'
 import "aos/dist/aos.css"
@@ -16,26 +16,24 @@ export const RecipeList = () => {
     // create recipe state
     const [recipes, setRecipes] = useState([])
     const [likesArray, setLikes] = useState([])
+    const [steps, setSteps] = useState([])
     const history = useHistory()
 
 // use effect fetches recipes with expanded users from API
     useEffect(
         () => {
             getAllRecipesWithSteps()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setRecipes(data)
-                })
+                .then((data) => {setRecipes(data)})
+                .then(getAllSteps)
+                .then((data) => {setSteps(data)})
         },
         []
     )
+
     useEffect(
         () => {
             getAllLikes()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setLikes(data)
-                })
+                .then((data) => {setLikes(data)})
         },
         []
     )
@@ -94,6 +92,15 @@ export const RecipeList = () => {
                 recipes.map(
                     (recipe) => {
                         const foundUserId = parseInt(localStorage.getItem("recipe_user"))
+                        // get all steps.time for recipe into array to extract time
+                        const stepsArray = steps.filter(step => step.recipeId === recipe.id)
+                        const minuteAdder = () => {
+                            let aggregatedTime = 0
+                            const minuteMap = stepsArray.map(step => step.minutes)
+                            const time = minuteMap.reduce( (previousValue, currentValue) => previousValue + currentValue, aggregatedTime)
+                            return time
+                        }
+                        // use reduce to add all time up
                         let liked = ``
                         // find if there is a like for this recipe
                         
@@ -116,12 +123,14 @@ export const RecipeList = () => {
                         
                         return <div data-aos="fade-up" key={`recipe--${recipe.id}`} className="recipe-div">
                                 {/* link to recipe page */}
-                                <Link data-aos="slide-right" to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >
+                                <div className="parent">
+                                    <Link data-aos="slide-right" to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >
                                     {/* title */}
-                                <h4 className="post-title">{recipe.name} by {recipe.user.name}</h4></Link>
+                                    <h4 className="post-title">{recipe.name} by {recipe.user.name} <div className="minutes">{minuteAdder()} min.</div></h4></Link>
+                                </div>
                                 {/* image */}
                                 <div  data-aos="slide-left" className="image-container">
-                                    <img  className="post-image"  src={recipe.photo} alt="Photo of Food" />
+                                    <img  className="post-image"  src={recipe.photo} alt="Food" />
                                 </div>
                                 {/* story */}
                                 <section className="story-conatiner">

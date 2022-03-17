@@ -62,7 +62,7 @@ export const HomePage = () => {
                     {/* map of likes */}
                     {
                         likes.map((like) => {
-                            return <Link key={like.id} to={`recipes/${like.recipe.id}`} ><p>{like.recipe.name}</p></Link>
+                            return <Link key={like.id} to={`recipes/${like.recipe.id}`} ><p className="likes">{like.recipe.name}</p></Link>
                         })
                     }
                 </div>
@@ -74,7 +74,7 @@ export const HomePage = () => {
                     {
                         userRecipes.map((recipe) => {
                             return (<div className="recipes-edit" key={recipe.id}>
-                            <Link key={`recipe-${recipe.id}`} to={`recipes/${recipe.id}`}>{recipe.name}</Link>
+                            <Link key={`recipe-${recipe.id}`} to={`recipes/${recipe.id}`} className="my-recipes">{recipe.name}</Link>
                             <div className="buttons-container" key={`buttons--${recipe.id}`} >
                                 <button className="edit" key={`button--${recipe.id}`} onClick={()=> history.push(`/edit/${recipe.id}`)}>Edit</button>
                                 <button className="delete" key={`delete-button--${recipe.id}`} onClick={()=>deleteRecipe(recipe.id)}>Delete</button>
