@@ -69,8 +69,22 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+FEATURES:
+ <ul>
+    <li>Create a new recipe</li>
+    <li>Link to a photo of your recipe</li>
+    <li>Share your memory of the recipe</li>
+    <li>Edit your recipes</li>
+    <li>Like/save someone else's recipe</li>
+    <li>Comment under any recipe</li>
+    <li>Fork someone else's recipe and make changes</li>
+    <li>Search by recipe name or ingredient</li>
+    <li>Browse a list of all submitted recipes</li>
+    
+  </ul>
 <div align="center">
-<img src="images/deedee-screenshot.png" height="auto" width="auto"/>
+
+  <a href="https://dbdiagram.io/d/620efde2485e433543d35894">Project ERD</a>
 </div>
 
 
