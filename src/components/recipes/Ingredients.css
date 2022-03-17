@@ -1,50 +1,48 @@
-.ingredient-add-step {
-    background-color: #b3d5eb;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    border-radius: 30px;
-    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
-    margin-right: .7em;
+.outer-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.ingredient-delete-step {
-    background-color: #e4b6c0;
-    width: 2em;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 6px 2px;
-    border-radius: 5px;
-    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
-
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-
+.ing-buttons{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
 .ingredients-container {
     margin: 1em;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
     border: 1px solid black;
     justify-content: space-between;
-    padding: 2em;
+    
+    /* width: 30vw; */
+    flex-basis: 50%;
+	flex-basis: 200px;
     box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
 }
 
-.ingredient {
-    margin-right: 1em;
-    width: 12em;
-    justify-content: space-between;
+.ingredients-inner-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
 
+.ingredient {
+    margin: .5em;
+    width: 12em;
 }
 
 
 .amount {
     width: 12em;
-    margin-right: .5em;
+    margin: .5em;
+    
 }

@@ -31,8 +31,8 @@ export const Steps = (props) => {
     }
 
     return <section>
-        <div id="wrapper">
-            <fieldset>
+        
+            <fieldset className="new-steps">
                 { inputFields.map((inputField, index) => (
                     <div className="step-container" key={index}>
                         {/* minutes */}
@@ -90,6 +90,7 @@ export const Steps = (props) => {
                                 
                             }
                         } />
+                        <div className="ing-buttons">
                         {/* add/delete field buttons */}
                         <button className="add-step"
                             onClick={() => handleAddFields()}
@@ -97,9 +98,10 @@ export const Steps = (props) => {
                         <button className="delete-step"
                             onClick={() => handleDeleteFields(index)}
                         >-</button>
+                        </div>
                     </div>
                 ))}
             </fieldset>
-        </div>
+        
     </section>
 }

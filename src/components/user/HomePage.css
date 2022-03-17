@@ -24,6 +24,7 @@
 .favorites-and-recipes {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .recipes-container {
@@ -46,7 +47,7 @@
     display: block;
     background-color: rgb(255, 255, 255);
     width: 4rem;
-    height: 1rem;
+    height: 2rem;
     padding: .5em;
     text-align: center;
     font-weight: bold;
@@ -71,7 +72,7 @@
 .delete {
     display: block;
     width: 4rem;
-    height: 1rem;
+    height: 2rem;
     padding: .5em;
     text-align: center;
     font-weight: bold;
@@ -125,7 +126,7 @@ div a {
 
 .likes {
     margin: .5em;
-    padding: 0em 1em;
+    padding: .2em 1em;
     background-color: white;
     box-shadow: 1px 1px 3px 1px grey, 1px 1px 2px 1px lightgray;
 }
@@ -133,6 +134,6 @@ div a {
 .my-recipes {
     margin: .5em;
     background-color: white;
-    padding: 0em 1em;
+    padding: .2em 1em;
     box-shadow: 1px 1px 3px 1px grey, 1px 1px 2px 1px lightgray;
 }

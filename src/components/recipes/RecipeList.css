@@ -4,8 +4,8 @@
 }
 
 .image-container {
-    width: 25em;
-    height: 25em;
+    width: 40vw;
+    height: 40vw;
     overflow: hidden;
     position: relative;
     background: rgba(236, 230, 230, 0.5);
@@ -30,6 +30,7 @@
     align-items: center;
     display: flex;
     width: 6em;
+    max-height: 2em;
     background-color: rgb(252, 252, 252);
 }
 .post-image {

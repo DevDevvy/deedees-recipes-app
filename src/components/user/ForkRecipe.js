@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
-import { Steps } from "../recipes/Steps";
 import { getAllForkedRecipes } from "../../ApiManager";
+import "./ForkRecipe.css"
 // create a function that lists out all the recipes in XML
 export const ForkRecipe = () => {
   // create recipe state
@@ -215,10 +215,7 @@ export const ForkRecipe = () => {
                         }}
                     />
                     <div className="button-container">
-                <button 
-                    className="add-step" 
-                    onClick={(e) => handleAddFieldsSteps(e)}
-                    >+</button>
+                
                 <button
                     className="delete-step"
                     onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
@@ -227,7 +224,10 @@ export const ForkRecipe = () => {
                     </div>
                 );
                 })}
-                
+                <button 
+                    className="add-step" 
+                    onClick={(e) => handleAddFieldsSteps(e)}
+                    >+</button>
             </fieldset>
             <fieldset>
                 <h3>Ingredients</h3>
