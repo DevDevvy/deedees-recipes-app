@@ -70,7 +70,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-<img src="images/deedee-screenshot.png" height="auto" width="auto"/>
+
+  <a href="https://dbdiagram.io/d/620efde2485e433543d35894">Project ERD</a>
 </div>
 
 
