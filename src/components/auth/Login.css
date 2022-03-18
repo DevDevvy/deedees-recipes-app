@@ -14,7 +14,7 @@ fieldset {
 }
 
 .form--login {
-    display: inline-block;
+    display: flex;
     margin: 0 auto;
     text-align: left;
     padding: 2em;
