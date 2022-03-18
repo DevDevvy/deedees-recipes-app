@@ -52,7 +52,7 @@ export const Register = (props) => {
             
             
             <form className="form--login" onSubmit={handleRegister}>
-            <button className="close-register" onClick={e => history.push("/login")}>Close</button>
+            {/* <button className="close-register" onClick={e => history.push("/login")}>Close</button> */}
                 <h1 className="h3 mb-3 font-weight-normal">Welcome, please register here.</h1>
                 <fieldset>
                     <label className="labels" htmlFor="name"> User Name </label>
