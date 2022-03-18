@@ -16,7 +16,7 @@ export const HomePage = () => {
     // get likes with expanded user and recipe
     useEffect(
         () => {
-            fetch(`http://localhost:8088/likes?userId=${userId}&_expand=recipe`)
+            fetch(`https://deedees-api-qdte8.ondigitalocean.app/likes?userId=${userId}&_expand=recipe`)
                 .then(res => res.json())
                 .then((data) => {
                     // set recipe state with data from API
@@ -29,7 +29,7 @@ export const HomePage = () => {
     useEffect(
         () => {
             
-            fetch(`http://localhost:8088/recipes?userId=${userId}`)
+            fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes?userId=${userId}`)
                 .then(res => res.json())
                 .then((data) => {
                     // set recipe state with data from API
@@ -39,13 +39,13 @@ export const HomePage = () => {
         []
     )
     const deleteRecipe = (id) => {
-        fetch(`http://localhost:8088/recipes/${id}`, {
+        fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${id}`, {
             method: "DELETE"
         })
         .then(update)
     }
     const update = () => {
-        return fetch(`http://localhost:8088/recipes?userId=${userId}`)
+        return fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes?userId=${userId}`)
             .then(r => r.json())
             .then((data) => {
                 setUserRecipes(data)

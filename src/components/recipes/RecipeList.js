@@ -59,7 +59,7 @@ export const RecipeList = () => {
             },
             body: JSON.stringify(newLike)
         }
-        return fetch("http://localhost:8088/likes", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes", fetchOption)
                 .then(res => res.json())
                 .then((data) => {
                     // set recipe state with data from API

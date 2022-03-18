@@ -54,7 +54,7 @@ export const ForkRecipe = () => {
     // -------api calls------------------------
   // recipe with user, steps, ingredients
     useEffect(() => {
-    fetch(`http://localhost:8088/recipes/${recipeId}?_expand=user&_embed=steps&_embed=ingredients`)
+    fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${recipeId}?_expand=user&_embed=steps&_embed=ingredients`)
         .then((res) => res.json())
         .then((data) => {
             setSteps(data.steps);
@@ -97,7 +97,7 @@ export const ForkRecipe = () => {
             },
             body: JSON.stringify(newRecipe),
         };
-        return fetch("http://localhost:8088/forkedRecipes", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/forkedRecipes", fetchOption)
             .then(sendSteps);
     };
   // sends object to API
@@ -112,7 +112,7 @@ export const ForkRecipe = () => {
             },
             body: JSON.stringify(step),
         };
-        return fetch("http://localhost:8088/forkedSteps", fetchOption);
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/forkedSteps", fetchOption);
     };
 
   // save ingredients
@@ -125,7 +125,7 @@ export const ForkRecipe = () => {
         },
         body: JSON.stringify(ingredient),
     };
-    return fetch("http://localhost:8088/forkedIngredients", fetchOption);
+    return fetch("https://deedees-api-qdte8.ondigitalocean.app/forkedIngredients", fetchOption);
     };
 
   // iterates through steps list to send to API one by one

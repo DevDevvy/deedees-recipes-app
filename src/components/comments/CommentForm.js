@@ -28,7 +28,7 @@ export const CommentForm = ({setComments}) => {
             },
             body: JSON.stringify(commentObject)
         }
-        return fetch("http://localhost:8088/comments", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/comments", fetchOption)
         .then(clearComment())
     }
     const clearComment = () => {

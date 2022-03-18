@@ -13,7 +13,7 @@ export const EditRecipe = () => {
     // recipe with user, steps, ingredients
     useEffect(
         () => {
-            fetch(`http://localhost:8088/recipes/${recipeId}?_expand=user&_embed=steps&_embed=ingredients`)
+            fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${recipeId}?_expand=user&_embed=steps&_embed=ingredients`)
                 .then(res => res.json())
                 .then((data) => {
                     // set recipe state with data from API
@@ -43,7 +43,7 @@ export const EditRecipe = () => {
             },
             body: JSON.stringify(editRecipe)
         }
-        return fetch(`http://localhost:8088/recipes/${id}`, fetchOption)
+        return fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${id}`, fetchOption)
         // after recipe put, trigger steps
             .then(sendSteps)
             
@@ -70,7 +70,7 @@ export const EditRecipe = () => {
                 },
                 body: JSON.stringify(singleStep)
             }
-            return fetch(`http://localhost:8088/steps/${id}`, fetchOption)
+            return fetch(`https://deedees-api-qdte8.ondigitalocean.app/steps/${id}`, fetchOption)
                 
             
     }
@@ -94,7 +94,7 @@ export const EditRecipe = () => {
                 },
                 body: JSON.stringify(singleIngredient)
             }
-            return fetch(`http://localhost:8088/ingredients/${id}`, fetchOption)
+            return fetch(`https://deedees-api-qdte8.ondigitalocean.app/ingredients/${id}`, fetchOption)
                 
             
     }

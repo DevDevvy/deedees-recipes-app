@@ -47,7 +47,7 @@ export const RecipeListSearch = (props) => {
             },
             body: JSON.stringify(newLike)
         }
-        return fetch("http://localhost:8088/likes", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes", fetchOption)
                 .then(res => res.json())
                 .then(update)
         
@@ -55,13 +55,13 @@ export const RecipeListSearch = (props) => {
 
 
     const unlikeRecipe = (id) => {
-        fetch(`http://localhost:8088/likes/${id}`, {
+        fetch(`https://deedees-api-qdte8.ondigitalocean.app/likes/${id}`, {
             method: "DELETE"
         })
         .then(update)
     }
     const update = () => {
-        return fetch("http://localhost:8088/likes?_expand=user")
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes?_expand=user")
             .then(res => res.json())
             .then((data) => {
                 setLikes(data)

@@ -51,7 +51,7 @@ export const RecipeForm = () => {
             },
             body: JSON.stringify(newRecipe)
         }
-        return fetch("http://localhost:8088/recipes", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/recipes", fetchOption)
             .then(sendSteps)
             
     }
@@ -72,7 +72,7 @@ export const RecipeForm = () => {
             },
             body: JSON.stringify(step)
         }
-        return fetch("http://localhost:8088/steps", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/steps", fetchOption)
         
     }
     
@@ -86,7 +86,7 @@ export const RecipeForm = () => {
             },
             body: JSON.stringify(ingredient)
         }
-        return fetch("http://localhost:8088/ingredients", fetchOption)
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/ingredients", fetchOption)
             
         }
         // iterates through ingredients to send to API one by one

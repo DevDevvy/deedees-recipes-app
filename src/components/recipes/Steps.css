@@ -12,6 +12,7 @@
     padding: .5em;
     margin: 1em;
     align-content: space-between;
+    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
 }
 .new-steps{
     display: flex;
@@ -71,3 +72,9 @@
     box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
 
 }
+@media screen and (max-width: 600px) {
+    .listing {
+        font-size: 5vw;
+    }
+    
+    }
