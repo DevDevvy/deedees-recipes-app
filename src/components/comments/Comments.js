@@ -11,9 +11,9 @@ export const Comments = ({comments, users}) => {
         <div className="comment-container">
             {
                 filteredComments.map(comment => {
-                    const foundUser = users.find(user => user.id === comment.userId).name
+                    const foundUser = users.find(user => user.id === comment.userId)
                     return <div key={comment.id} className="single-comment-container">
-                    <div key={`comment--${comment.id}`} className="single-comment"><h4 className="commenter">{foundUser} said:</h4> {comment.comment}</div>
+                    <div key={`comment--${comment.id}`} className="single-comment"><h4 className="commenter">{foundUser?.name} said:</h4> {comment.comment}</div>
                     </div> 
                 }
                 )

@@ -10,6 +10,7 @@
 .ingredients {
     padding: .5em;
     margin: 1em;
+    min-width: 25vw;
 }
 .li {
     font-size: 2vw;
