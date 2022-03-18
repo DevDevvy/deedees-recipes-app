@@ -177,8 +177,9 @@ export const ForkRecipe = () => {
                 />
                 </div>
             </fieldset>
-            
-            <fieldset>
+            <div className="steps-ingredients-container">
+            <div className="step-container">
+            <fieldset className="steps-container">
                 <h3>Steps</h3>
                 {steps.map((stp, index) => {
                 return (
@@ -229,7 +230,9 @@ export const ForkRecipe = () => {
                     onClick={(e) => handleAddFieldsSteps(e)}
                     >+</button>
             </fieldset>
-            <fieldset>
+            </div>
+            <div className="step-container">
+            <fieldset className="steps-container">
                 <h3>Ingredients</h3>
             {/* map through ingredients to output edit fields */}
                 {ingredients.map((ingr, index) => (
@@ -286,7 +289,8 @@ export const ForkRecipe = () => {
                     </button>
                 </div>
             </fieldset>
-
+            </div>
+            </div>
             <button
                 type="button"
                 className="btn btn-primary"

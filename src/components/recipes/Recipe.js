@@ -74,24 +74,24 @@ export const Recipe = () => {
                     {/* ingredient and step lists */}
                     <div className="ingredients-and-steps-container">
                         <div className="ingredients">
-                            <h4>Ingredient List:</h4>
+                            <h3 className="listing">Ingredient List:</h3>
                             <ul>
                                 {
                                     
                                     list.map(
                                         (ingredient) => { 
                                             
-                                            return <li key={`ingredient--${ingredient.id}`}>{ingredient.name} ({ingredient.amount})</li>})
+                                            return <li key={`ingredient--${ingredient.id}`}><h4 className="li">{ingredient.name} ({ingredient.amount})</h4></li>})
                                     } 
                             </ul>
                         </div>
                         <div className="steps">
-                            <h4>Steps:</h4>
+                            <h3 className="listing">Steps:</h3>
                             <ol>
                                 {
                                     orderedSteps.map(
                                         (step) => { 
-                                            return <li key={`step--${step.id}`}>{step.step} ({step.minutes} min.)</li>})
+                                            return <li key={`step--${step.id}`}><h4 className="li">{step.step} ({step.minutes} min.)</h4></li>})
                                     } 
                             </ol>
                         </div>

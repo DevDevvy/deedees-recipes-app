@@ -54,7 +54,7 @@
     background-color: rgb(216, 234, 241);
 }
 .recipe-div:nth-child(odd) {
-    background-color: rgb(237, 241, 234);
+    background-color: rgba(241, 236, 235, 0.521);
 }
 
 .story {
@@ -99,3 +99,9 @@ a {
     display: flex;
     flex-direction: row-reverse;
 }
+
+@media screen and (max-width: 600px) {
+    .recipe-div {
+        margin: 7px;
+    }
+    }

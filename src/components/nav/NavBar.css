@@ -8,7 +8,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-inline-start: 0;
 }
+
 
 .navbar__item {
 
@@ -50,6 +52,7 @@
     font-size: 7vw;
     text-shadow: 4px 4px 4px #999988;
     color: rgb(59, 51, 45);
+    margin-top: 25px;
 }
 
 #logout {

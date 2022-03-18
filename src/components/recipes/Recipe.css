@@ -3,10 +3,16 @@
     align-content: space-between;
 
 }
-
+.listing{
+    text-align: left;
+    font-size: 3vw;
+}
 .ingredients {
     padding: .5em;
     margin: 1em;
+}
+.li {
+    font-size: 2vw;
 }
 
 .fork-container {
@@ -38,3 +44,19 @@
     justify-content: center;
     cursor: pointer;
 }
+@media screen and (max-width: 600px) {
+    .li {
+        font-size: 4vw;
+    }
+    .ingredients-and-steps-container {
+        display: flex;
+        align-content: space-between;
+        flex-direction: column;
+    }
+    .comment {
+        width: 60vw;
+    }
+    .single-comment-container {
+        width: 50vw;
+    }
+    }

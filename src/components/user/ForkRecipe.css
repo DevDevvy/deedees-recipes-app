@@ -2,3 +2,43 @@
     display: flex;
     flex-direction: row;
 }
+
+.step-container {
+    display: flex;
+    
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.steps-ingredients-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+}
+.steps {
+    padding: .5em;
+    margin: 1em;
+    align-content: space-between;
+}
+.new-steps{
+    display: flex;
+    flex-wrap: wrap;
+}
+.step {
+    margin: .5em;
+    width: 15vw;
+}
+.steps-container {
+    background-color: rgba(241, 236, 235, 0.521);;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+    padding: 2em;
+    flex-basis: 50%;
+	flex-basis: 400px;
+    width: 45%;
+    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+}
