@@ -49,10 +49,7 @@ export const Register = (props) => {
     return (
         <main style={{ textAlign: "center" }}>
             <article className="register-container">
-            <dialog className="dialog dialog--password" ref={conflictDialog}>
-                <div>Account with that email address already exists</div>
-                <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
-            </dialog>
+            
             
             <form className="form--login" onSubmit={handleRegister}>
             <button className="close-register" onClick={e => history.push("/login")}>Close</button>
