@@ -44,7 +44,7 @@ export const Login = () => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button onClick={} className="sign-in"type="submit">
+                        <button onClick={handleLogin} className="sign-in" type="submit">
                             Sign in
                         </button>
                     </fieldset>
