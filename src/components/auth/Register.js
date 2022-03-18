@@ -9,7 +9,7 @@ export const Register = (props) => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`https://deedees-api-qdte8.ondigitalocean.app/users?email=${user.email}`)
+        return fetch(`http://localhost:8088/users?email=${user.email}`)
             .then(res => res.json())
             .then(user => !!user.length)
     }
@@ -18,7 +18,7 @@ export const Register = (props) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("https://deedees-api-qdte8.ondigitalocean.app/users", {
+                    fetch("http://localhost:8088/users", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -53,8 +53,9 @@ export const Register = (props) => {
                 <div>Account with that email address already exists</div>
                 <button className="button--close" onClick={e => conflictDialog.current.close()}>Close</button>
             </dialog>
-
+            
             <form className="form--login" onSubmit={handleRegister}>
+            <button className="close-register" onClick={e => history.push("/login")}>Close</button>
                 <h1 className="h3 mb-3 font-weight-normal">Welcome, please register here.</h1>
                 <fieldset>
                     <label className="labels" htmlFor="name"> User Name </label>

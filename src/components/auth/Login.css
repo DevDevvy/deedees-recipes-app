@@ -20,16 +20,21 @@ fieldset {
     padding: 2em;
     display: flex;
     flex-direction: column;
-    align-items: center;;
+    align-items: center;
+    background-color: rgb(213, 219, 199);
 }
-
+/* close button on register form */
+.close-register{
+    border-radius: 25px;
+    box-shadow: 1px 1px 3px 1px;
+}
 .register-container {
     box-shadow: 0.2rem 0.2rem 0.4rem rgb(143, 165, 173), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
 
 }
 
 .form--login > fieldset > input[type="email"] {
-    width: 25em;
+    width: 40vw;
 }
 
 .label--login {
@@ -54,22 +59,19 @@ fieldset {
     -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-
+.login-container {
+    display: flex;
+    width: 80vw;
+}
 .container--login {
     text-align: center;
     background-color: rgb(213, 219, 199);
     box-shadow: 1px 1px 4px 1px;
+    display: flex;
+    justify-content: center;
 }
 
-.form--login {
-    background-position-x: right;
-    z-index: 1;
-    min-height: 25rem;
-    min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-}
+
 
 .button--close {
     position: relative;

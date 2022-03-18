@@ -156,13 +156,14 @@ export const EditRecipe = () => {
                         <input
                         required 
                         type="number"
+                        step="0.1"
                         className="number"
                         value={steps[index].minutes}
                         // listens for state change
                         onChange={
                             (evt) => {
                                 const copy = [...steps]
-                                    copy[index].minutes = parseInt(evt.target.value)
+                                    copy[index].minutes = parseFloat(evt.target.value)
                                     setSteps(copy)
                                 }
                             }
