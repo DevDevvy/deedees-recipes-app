@@ -2,6 +2,8 @@
 import "./Comments.css"
 import { useParams } from "react-router"
 
+// function gets comments and users from props
+// maps out all comments found for each post
 export const Comments = ({comments, users}) => {
 
     const {recipeId} = useParams()

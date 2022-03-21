@@ -2,18 +2,18 @@ import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./Login.css"
-
+// user log in checks email from api
 export const Login = () => {
     const [email, set] = useState("")
     const existDialog = useRef()
     const history = useHistory()
-
+    // check if email exists
     const existingUserCheck = () => {
         return fetch(`https://deedees-api-qdte8.ondigitalocean.app/users?email=${email}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
-
+    // check if user exists 
     const handleLogin = (e) => {
         e.preventDefault()
         existingUserCheck()

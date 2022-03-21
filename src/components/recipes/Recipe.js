@@ -6,7 +6,7 @@ import { CommentForm } from "../comments/CommentForm";
 import { Comments } from "../comments/Comments";
 import { ForkedRecipeList } from "../forked/ForkedRecipe";
 import "./Recipe.css"
-// create a function that lists out all the recipes in XML
+// functions responsibility is to make a single representation of the recipe user clicked on
 export const Recipe = () => {
     // create recipe state
     const [comments, setComments] = useState([])
@@ -16,7 +16,7 @@ export const Recipe = () => {
     const [ingredients, setIngredients] =useState([])
     const {recipeId} = useParams()
     
-
+    // listens for recipeId to set data from api
     useEffect(
         () => {
             getUserRecipe(recipeId)
@@ -35,21 +35,11 @@ export const Recipe = () => {
                 .then((data) => {setSteps(data)})
                 .then(getAllIngredients)
                 .then((data) => {setIngredients(data)})
+                .then(getAllComments)
+                .then((data) => {setComments(data) })
         },
         []
     )
-
-    useEffect(
-        () => {
-            getAllComments()
-                .then((data) => {
-                    // set step state with data from API
-                    setComments(data)
-                })
-        },
-        []
-    )
-
     // get list of ingredients that match recipe id
     const list = ingredients.filter((ingredient) => {
         return parseInt(ingredient.recipeId) === parseInt(recipeId)

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router"
 import { getAllForkedIngredients, getAllForkedRecipes, getAllForkedSteps } from "../../ApiManager"
 
-
+// finds all forked recipes that are related to current recipe
 export const ForkedRecipeList = ({users}) => {
     const [forkedRecipes, setForkedRecipes] = useState([])
     const [forkedIngredients, setForkedIngredients] = useState([])
@@ -36,7 +36,7 @@ export const ForkedRecipeList = ({users}) => {
                 const foundIngredients = forkedIngredients.filter(ingredient => ingredient.recipeId === recipe.id)
                 // find user for post
                 const foundUser = users?.find(user => user.id === recipe.userId)
-                // put steps list in order
+                // put steps list in order for final output
                 const orderedSteps = foundSteps.sort((a, b) =>  a.stepNumber - b.stepNumber)
                 return <div key={`recipe--${recipe.id}`} className="recipe-div">
                         <h2>Forked Recipes</h2>

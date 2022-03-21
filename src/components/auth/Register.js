@@ -50,7 +50,6 @@ export const Register = (props) => {
         <main style={{ textAlign: "center" }}>
             <article className="register-container">
             
-            
             <form className="form--login" >
             {/* <button className="close-register" onClick={e => history.push("/login")}>Close</button> */}
                 <h1 className="h3 mb-3 font-weight-normal">Welcome, please register here.</h1>

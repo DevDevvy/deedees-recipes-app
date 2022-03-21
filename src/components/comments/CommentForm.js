@@ -4,6 +4,7 @@ import "./CommentForm.css"
 import { useHistory } from "react-router"
 import { getAllComments } from "../../ApiManager"
 
+// function outputs the comment form, takes prop to set comments
 export const CommentForm = ({setComments}) => {
     const history = useHistory()
     const {recipeId} = useParams()
@@ -20,7 +21,6 @@ export const CommentForm = ({setComments}) => {
             recipeId: parseInt(recipeId)
         }
         // use fetch method POST to send object into API
-
         const fetchOption = {
             method: "POST",
             headers: {
@@ -29,8 +29,10 @@ export const CommentForm = ({setComments}) => {
             body: JSON.stringify(commentObject)
         }
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/comments", fetchOption)
+        // clear the comment after sent to API
         .then(clearComment())
     }
+    // clear comment, and update state
     const clearComment = () => {
         const copy = {...comment}
         copy.comment = ""
