@@ -50,29 +50,25 @@ export const EditRecipe = () => {
     }
     // iterates through steps list to send to API one by one
     const sendSteps = () => {
-        // iterate through steps to send one by one to API
         for (const singleStep of steps) {
-            // send single step to function
             editSteps(singleStep)
         }
         // after all steps post, trigger sendIngredients
         sendIngredients()
     }
-    // PUT to send step(s) to API
+    // PUT to send step to API
     const editSteps = (step) => {
-            // use fetch method POST to send object into API
-            const singleStep = step
-            const id = step.id
-            const fetchOption = {
-                method: "PUT",
-                headers: {
-                    "Content-Type" : "application/json"
-                },
-                body: JSON.stringify(singleStep)
-            }
-            return fetch(`https://deedees-api-qdte8.ondigitalocean.app/steps/${id}`, fetchOption)
-                
-            
+        // use fetch method POST to send object into API
+        const singleStep = step
+        const id = step.id
+        const fetchOption = {
+            method: "PUT",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(singleStep)
+        }
+        return fetch(`https://deedees-api-qdte8.ondigitalocean.app/steps/${id}`, fetchOption)
     }
     // iterate through all ingredients to send to API
     const sendIngredients = () => {
@@ -185,9 +181,7 @@ export const EditRecipe = () => {
                                 
                             }
                         />
-                        
                     </div>
-                    
                 })}
             </fieldset>
             <fieldset>

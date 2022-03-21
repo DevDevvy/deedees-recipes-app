@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router";
-import { getAllRecipes } from "../../ApiManager";
+import { getAllRecipes, saveSteps, saveIngredients } from "../../ApiManager";
 import { Ingredients } from "./Ingredients";
 import "./RecipeForm.css"
 import { Steps } from "./Steps";
+
 
 // function outputs the main component for a new recipe 
 export const RecipeForm = () => {
@@ -58,30 +59,30 @@ export const RecipeForm = () => {
         sendIngredients()
     }
     // sends single object to API
-    const saveSteps = (step) => {
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(step)
-        }
-        return fetch("https://deedees-api-qdte8.ondigitalocean.app/steps", fetchOption)
+    // const saveSteps = (step) => {
+    //     const fetchOption = {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type" : "application/json"
+    //         },
+    //         body: JSON.stringify(step)
+    //     }
+    //     return fetch("https://deedees-api-qdte8.ondigitalocean.app/steps", fetchOption)
         
-    }
+    // }
     
-    // save ingredients
-    const saveIngredients = (ingredient) => {
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(ingredient)
-        }
-        return fetch("https://deedees-api-qdte8.ondigitalocean.app/ingredients", fetchOption)
+    // // save ingredients
+    // const saveIngredients = (ingredient) => {
+    //     const fetchOption = {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type" : "application/json"
+    //         },
+    //         body: JSON.stringify(ingredient)
+    //     }
+    //     return fetch("https://deedees-api-qdte8.ondigitalocean.app/ingredients", fetchOption)
             
-        }
+    //     }
         // iterates through ingredients to send to API one by one
     const sendIngredients = () => {
         for (const ingredient of ingredients) {
@@ -169,16 +170,19 @@ export const RecipeForm = () => {
                 {/* --------------ingredients container-------------- */}
                 <div className="steps-container">
                     <h3 className="steps-and-ingredients-labels">INGREDIENTS</h3>
-                            <Ingredients
-                                ingredients = {ingredients}
-                                setIngredients = {setIngredients}
-                                recipes = {recipes}
-                                />
+                    <Ingredients
+                        ingredients = {ingredients}
+                        setIngredients = {setIngredients}
+                        recipes = {recipes}
+                    />
                 </div>
             </section>
             {/* button for submit with onClick event listener that calls saveTicket (POST to API) */}
-            <button className="btn btn-primary" id="save-recipe" onClick={saveRecipe}>
-                Save Recipe
+            <button 
+                className="btn btn-primary" 
+                id="save-recipe" 
+                onClick={saveRecipe}
+                >Save Recipe
             </button>
         </form>
     )

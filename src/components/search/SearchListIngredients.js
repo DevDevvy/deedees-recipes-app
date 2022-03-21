@@ -45,22 +45,18 @@ export const SearchListIngredients = (props) => {
                                     <h4 className="post-title">{foundRecipe.name}</h4></Link>
                                     <h5>Your search found:"{ingredient.name}"</h5>
                                     <ul>
-                                    {/* all ingredients for recipe */}
-                                    {ingredientArray.map(ingredient => {
-                                        return <li key={ingredient.id}>{ingredient.name} ({ingredient.amount})</li>
-                                    })}
+                                        {/* all ingredients for recipe */}
+                                        {ingredientArray.map(ingredient => {
+                                            return <li key={ingredient.id}>{ingredient.name} ({ingredient.amount})</li>
+                                        })}
                                     </ul>
                                     {/* image */}
                                     <section className="image-container">
                                         <img className="post-image" src={foundRecipe.photo} alt="Photo of Food" />
                                     </section>
-                                    
                                 </div>
                             } 
                         }
-
-                        
-                    
                     )
                 }
                 </section>

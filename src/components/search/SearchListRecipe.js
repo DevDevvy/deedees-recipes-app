@@ -66,28 +66,25 @@ export const RecipeListSearch = (props) => {
                         const foundUserId = parseInt(localStorage.getItem("recipe_user"))
                         let liked = ``
                         // find if there is a like for this recipe
-                        
                         const foundLike = likesArray.find(like => like.recipeId === recipe.id && like.userId === foundUserId )
+                        const itemName = recipe.name.toLowerCase()
+                        const inputLower = props.searchInput.toLowerCase()
+                        
                         // switches between liked and unliked images
                         if (foundLike !== undefined) {
                             liked = 
                             <img className="favorite-button" 
-                            id={`unfavorite--${recipe.id}`} 
-                            src={solid} alt="solid heart"
-                            onClick={()=> unlikeRecipe(foundLike.id)}/>
+                                id={`unfavorite--${recipe.id}`} 
+                                src={solid} alt="solid heart"
+                                onClick={()=> unlikeRecipe(foundLike.id)}/>
                         } else {
-                            
                             liked = 
                             <img className="favorite-button" 
-                            id={`favorite--${recipe.id}`} 
-                            src={hollow} alt="hollow heart"
-                            onClick={()=> likeRecipe(recipe.id)}/>
+                                id={`favorite--${recipe.id}`} 
+                                src={hollow} alt="hollow heart"
+                                onClick={()=> likeRecipe(recipe.id)}/>
                         }
-
-                        const itemName = recipe.name.toLowerCase()
-                        const inputLower = props.searchInput.toLowerCase()
                         if (itemName.includes(inputLower)) {
-                        
                         return <div key={`recipe--${recipe.id}`} className="recipe-div">
                                 {/* link to recipe page */}
                                 <Link to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >

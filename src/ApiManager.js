@@ -30,7 +30,6 @@ export const getAllLikes = () => {
     return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes?_expand=user")
         .then(res => res.json())
 }
-
 export const getAllForkedIngredients = () => {
     return fetch("https://deedees-api-qdte8.ondigitalocean.app/forkedIngredients")
         .then(res => res.json())
@@ -52,3 +51,29 @@ export const apiDelete = (id) => {
         method: "DELETE"
     })
 }
+
+export const saveSteps = (step) => {
+        const fetchOption = {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(step)
+        }
+        return fetch("https://deedees-api-qdte8.ondigitalocean.app/steps", fetchOption)
+        
+    }
+
+// save ingredients
+export const saveIngredients = (ingredient) => {
+    const fetchOption = {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(ingredient)
+    }
+    return fetch("https://deedees-api-qdte8.ondigitalocean.app/ingredients", fetchOption)
+        
+    }
+

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Ingredients.css"
 
+// component responsible for ingredients steps in the recipe form, takes ingredients props
 export const Ingredients = (props) => {
     // set up input fields state
     const [inputFields, setInputField] = useState([
@@ -9,7 +10,7 @@ export const Ingredients = (props) => {
             amount: ""
         }
     ])
-// adds step
+// adds another step to input field
     const handleAddFields = () => {
         setInputField([...inputFields,
             {
@@ -18,7 +19,7 @@ export const Ingredients = (props) => {
             }
         ])
     }
-    // deletes step
+    // deletes step from input field
     const handleDeleteFields = (index) => {
         const values = [...inputFields]
         values.splice(index, 1)

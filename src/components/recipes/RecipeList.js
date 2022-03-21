@@ -5,14 +5,11 @@ import "./RecipeList.css"
 import hollow from "./hollow.svg"
 import solid from "./solid.svg"
 import { apiDelete, getAllLikes, getAllRecipesWithSteps, getAllSteps } from "../../ApiManager";
-
 import AOS from 'aos'
 import "aos/dist/aos.css"
 
 // create a function that lists out all the recipes in XML
 export const RecipeList = () => {
-    
-
     // create recipe state
     const [recipes, setRecipes] = useState([])
     const [likesArray, setLikes] = useState([])
@@ -31,6 +28,7 @@ export const RecipeList = () => {
         },
         []
     )
+    // triggers AOS animations
     useEffect(
         () => {
             AOS.init({duration: 2000})
@@ -128,13 +126,10 @@ export const RecipeList = () => {
                                         <div className="postButtons">
                                             <div id="favoriteButton">
                                                 {liked}
-                                                
                                             </div>
                                         </div>
                                     </article>
                                 </section>
-
-                                
                             </div>
                         }
                     )

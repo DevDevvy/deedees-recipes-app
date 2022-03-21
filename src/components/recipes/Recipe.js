@@ -56,7 +56,6 @@ export const Recipe = () => {
                 <h3><q>Good cookin', good lookin!'</q></h3>
             </div>
             <section className="recipe-container">
-            
                 <div key={`recipe--${recipe.id}`} className="recipe-div">
                         {/* title */}
 
@@ -67,12 +66,14 @@ export const Recipe = () => {
                             <h3 className="listing">Ingredient List:</h3>
                             <ul>
                                 {
-                                    
                                     list.map(
-                                        (ingredient) => { 
-                                            
-                                            return <li key={`ingredient--${ingredient.id}`}><h4 className="li">{ingredient.name} ({ingredient.amount})</h4></li>})
-                                    } 
+                                        (ingredient) => {
+                                            return <li key={`ingredient--${ingredient.id}`}
+                                                ><h4 className="li">{ingredient.name} ({ingredient.amount})</h4>
+                                            </li>
+                                        }
+                                    )
+                                } 
                             </ul>
                         </div>
                         <div className="steps">
@@ -81,7 +82,11 @@ export const Recipe = () => {
                                 {
                                     orderedSteps.map(
                                         (step) => { 
-                                            return <li key={`step--${step.id}`}><h4 className="li">{step.step} ({step.minutes} min.)</h4></li>})
+                                            return <li key={`step--${step.id}`}>
+                                                    <h4 className="li">{step.step} ({step.minutes} min.)</h4>
+                                                </li>
+                                            }
+                                        )
                                     } 
                             </ol>
                         </div>
@@ -115,7 +120,6 @@ export const Recipe = () => {
                     </div>
             </section>
             <section className="forked-recipe-list">
-                
                 <ForkedRecipeList
                 users = {users}/>
             </section>

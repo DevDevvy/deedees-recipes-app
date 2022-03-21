@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
 import { getAllForkedRecipes } from "../../ApiManager";
 import "./ForkRecipe.css"
+import { ForkedIngredients } from "./ForkIngredients";
+import { ForkedSteps } from "./ForkSteps";
+
 // create a function that lists out all the recipes in XML
 export const ForkRecipe = () => {
   // create recipe state
@@ -181,50 +184,11 @@ export const ForkRecipe = () => {
             <div className="step-container">
             <fieldset className="steps-container">
                 <h3>Steps</h3>
-                {steps.map((stp, index) => {
-                return (
-                    <div className="step-container" key={index}>
-                    {/* minutes */}
-                    <input
-                        required
-                        type="number"
-                        className="number"
-                        placeholder="Minutes"
-                        value={steps[index].minutes}
-                    // listens for state change
-                        onChange={(evt) => {
-                            const copy = [...steps];
-                            copy[index].minutes = parseFloat(evt.target.value);
-                            setSteps(copy);
-                        }}
+                <ForkedSteps
+                    steps={steps}
+                    setSteps={setSteps}
+                    handleDeleteFieldsSteps={handleDeleteFieldsSteps}
                     />
-                    {/* step */}
-                    <input
-                        required
-                        type="text"
-                        className="step"
-                        placeholder="Step"
-                        value={steps[index].step}
-                    // listens for state change
-                        onChange={(evt) => {
-                            // copy state
-                            const copy = [...steps];
-                            copy[index].step = evt.target.value;
-                            copy.stepNumber = index + 1
-                            
-                            setSteps(copy);
-                        }}
-                    />
-                    <div className="button-container">
-                
-                <button
-                    className="delete-step"
-                    onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
-                    >-</button>
-                </div>
-                    </div>
-                );
-                })}
                 <button 
                     className="add-step" 
                     onClick={(e) => handleAddFieldsSteps(e)}
@@ -234,59 +198,18 @@ export const ForkRecipe = () => {
             <div className="step-container">
             <fieldset className="steps-container">
                 <h3>Ingredients</h3>
-            {/* map through ingredients to output edit fields */}
-                {ingredients.map((ingr, index) => (
-                <div className="ingredients-inner-container" key={index}>
-                    <input
-                        required
-                        type="text"
-                        // key passed in to object will be "name"
-                        name="name"
-                        // makes value passed into object equal to current state
-                        value={ingredients[index].name}
-                        className="ingredient"
-                        placeholder={`Ingredient ${index + 1}`}
-                        id={`Ingredient${index + 1}`}
-                        // listens for state change
-                        onChange={(evt) => {
-                        // copy state
-                            const copy = [...ingredients];
-                            copy[index].name = evt.target.value;
-                            setIngredients(copy);
-                        }}
-                    />
-                    { /* amount of ingredient */}
-                    <input
-                        required
-                        type="text"
-                        className="amount"
-                        // so key passed into object will be "amount"
-                        placeholder="Amount"
-                        name="amount"
-                        // makes value passed into object equal to current state
-                        value={ingredients[index].amount}
-                        id="amount1"
-                        // listens for state change
-                        onChange={(evt) => {
-                        // copy state
-                            const copy = [...ingredients];
-                            copy[index].amount = evt.target.value;
-                            setIngredients(copy);
-                        }}
-                    />
-                </div>
-                ))}
+            <ForkedIngredients
+                ingredients={ingredients}
+                setIngredients={setIngredients}
+                handleDeleteFieldsIngredients={handleDeleteFieldsIngredients}
+            />
                 <div className="button-container">
                     <button
                         className="add-step"
                         onClick={(event) => handleAddFieldsIngredients(event)}
                     >+
                     </button>
-                    <button
-                        className="delete-step"
-                        onClick={(event) => handleDeleteFieldsIngredients(event)}
-                    >-
-                    </button>
+                    
                 </div>
             </fieldset>
             </div>

@@ -5,9 +5,8 @@ import { RecipeListSearch } from "./SearchListRecipe";
 import "./Search.css"
 
 
-
-
 export const SearchBar = () => {
+    
     const [searchInput, setSearchInput] = useState("")
     // sets search view state to recipes by default
     const [recipeView, setRecipeView] = useState(true)
@@ -21,7 +20,6 @@ export const SearchBar = () => {
 
         return (
             <>
-            
                 <form className="SearchBar">
                     <fieldset>
                         <div className="form-group">
@@ -38,9 +36,7 @@ export const SearchBar = () => {
                                 }} />
                         </div>
                     </fieldset>
-                    
                 </form>
-                
             </>
         )
     }

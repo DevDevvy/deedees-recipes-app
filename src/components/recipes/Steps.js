@@ -31,77 +31,75 @@ export const Steps = (props) => {
     }
 
     return <section>
-        
-            <fieldset className="new-steps">
-                { inputFields.map((inputField, index) => (
-                    <div className="step-container" key={index}>
-                        {/* minutes */}
-                        <input
-                        required 
-                        type="number"
-                        className="number"
-                        placeholder="Minutes"
-                        id={`minutes${index + 1} `}
-                        // listens for state change
-                        onChange={
-                            (evt) => {
-                                const copy = [...props.steps]
-                                if (copy.length === index) {
-                                    const step = {
-                                        recipeId: props.recipes.length + 1,
-                                        step: "",
-                                        stepNumber: index + 1,
-                                        minutes: parseFloat(evt.target.value)
-                                    }
-                                    copy.push(step)
-                                    props.setSteps(copy)
-                                } else {
-                                    copy[index].minutes = parseFloat(evt.target.value)
-                                    props.setSteps(copy)
+        <fieldset className="new-steps">
+            { inputFields.map((inputField, index) => (
+                <div className="step-container" key={index}>
+                    {/* minutes */}
+                    <input
+                    required 
+                    type="number"
+                    className="number"
+                    placeholder="Minutes"
+                    id={`minutes${index + 1} `}
+                    // listens for state change
+                    onChange={
+                        (evt) => {
+                            const copy = [...props.steps]
+                            if (copy.length === index) {
+                                const step = {
+                                    recipeId: props.recipes.length + 1,
+                                    step: "",
+                                    stepNumber: index + 1,
+                                    minutes: parseFloat(evt.target.value)
                                 }
+                                copy.push(step)
+                                props.setSteps(copy)
+                            } else {
+                                copy[index].minutes = parseFloat(evt.target.value)
+                                props.setSteps(copy)
                             }
-                        } />
-                        {/* step */}
-                        <input
-                        required autoFocus
-                        type="text"
-                        className="step"
-                        placeholder={`Step ${index + 1} `}
-                        id={`step${index + 1} `}
-                        // listens for state change
-                        onChange={
-                            (evt) => {
-                                // copy state
-                                const copy = [...props.steps]
-                                // make step object if
-                                if (copy.length === index) {
-                                    const step = {
-                                        recipeId: props.recipes.length + 1,
-                                        step: evt.target.value,
-                                        stepNumber: index + 1,
-                                        minutes: null
-                                    }
-                                    copy.push(step)
-                                    props.setSteps(copy)
-                                } else {
-                                    copy[index].step = evt.target.value
-                                    props.setSteps(copy)
+                        }
+                    } />
+                    {/* step */}
+                    <input
+                    required autoFocus
+                    type="text"
+                    className="step"
+                    placeholder={`Step ${index + 1} `}
+                    id={`step${index + 1} `}
+                    // listens for state change
+                    onChange={
+                        (evt) => {
+                            // copy state
+                            const copy = [...props.steps]
+                            // make step object if
+                            if (copy.length === index) {
+                                const step = {
+                                    recipeId: props.recipes.length + 1,
+                                    step: evt.target.value,
+                                    stepNumber: index + 1,
+                                    minutes: null
                                 }
-                                
+                                copy.push(step)
+                                props.setSteps(copy)
+                            } else {
+                                copy[index].step = evt.target.value
+                                props.setSteps(copy)
                             }
-                        } />
-                        <div className="ing-buttons">
-                        {/* add/delete field buttons */}
-                        <button className="add-step"
-                            onClick={() => handleAddFields()}
-                        >+</button>
-                        <button className="delete-step"
-                            onClick={() => handleDeleteFields(index)}
-                        >-</button>
-                        </div>
+                        }
+                    } />
+                    <div className="ing-buttons">
+                    {/* add/delete field buttons */}
+                    <button className="add-step"
+                        onClick={() => handleAddFields()}
+                    >+</button>
+                    <button className="delete-step"
+                        onClick={() => handleDeleteFields(index)}
+                    >-</button>
                     </div>
-                ))}
-            </fieldset>
+                </div>
+            ))}
+        </fieldset>
         
     </section>
 }
