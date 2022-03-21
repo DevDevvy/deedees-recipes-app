@@ -30,7 +30,7 @@ export const CommentForm = ({setComments}) => {
         }
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/comments", fetchOption)
         // clear the comment after sent to API
-        .then(clearComment())
+        .then(clearComment)
     }
     // clear comment, and update state
     const clearComment = () => {

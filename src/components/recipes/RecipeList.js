@@ -26,18 +26,11 @@ export const RecipeList = () => {
                 .then((data) => {setRecipes(data)})
                 .then(getAllSteps)
                 .then((data) => {setSteps(data)})
-        },
-        []
-    )
-
-    useEffect(
-        () => {
-            getAllLikes()
+                .then(getAllLikes)
                 .then((data) => {setLikes(data)})
         },
         []
     )
-
     useEffect(
         () => {
             AOS.init({duration: 2000})
@@ -45,7 +38,7 @@ export const RecipeList = () => {
         },
         []
     )
-        // function to send new like object into API
+        // function to send new "like" object into API
     const likeRecipe = (id) => {
         // make new like object
         const newLike = {
@@ -60,15 +53,11 @@ export const RecipeList = () => {
             body: JSON.stringify(newLike)
         }
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes", fetchOption)
-                .then(res => res.json())
-                .then((data) => {
-                    // set recipe state with data from API
-                    update()
-                })
+                .then(update)
         
     }
 
-    // unlike recipe
+    // unlike recipe sends delete call to api and triggers update for component state
     const unlikeRecipe = (id) => {
         apiDelete(id)
         .then(update)
@@ -97,13 +86,12 @@ export const RecipeList = () => {
                         const minuteAdder = () => {
                             let aggregatedTime = 0
                             const minuteMap = stepsArray.map(step => step.minutes)
+                            // adds all time together
                             const time = minuteMap.reduce( (previousValue, currentValue) => previousValue + currentValue, aggregatedTime)
                             return time
                         }
-                        // use reduce to add all time up
                         let liked = ``
                         // find if there is a like for this recipe
-                        
                         const foundLike = likesArray.find(like => like.recipeId === recipe.id && like.userId === foundUserId )
                         // switches between liked and unliked images
                         if (foundLike !== undefined) {

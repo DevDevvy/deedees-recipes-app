@@ -13,29 +13,14 @@ export const RecipeListSearch = (props) => {
     useEffect(
         () => {
             getAllRecipes()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setRecipes(data)
-                    
-                })
+                .then((data) => {setRecipes(data)})
+                .then(getAllLikes)
+                .then((data) => {setLikes(data)})
             },
         []
     )
-    useEffect(
-        () => {
-            getAllLikes()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setLikes(data)
-                })
-        },
-        []
-    )
-
-
-        // function to send new "like" object into API
+    // function to send new "like" object into API
     const likeRecipe = (id) => {
-        // make new like object
         const newLike = {
             recipeId: id,
             userId: parseInt(localStorage.getItem("recipe_user")),
@@ -60,6 +45,7 @@ export const RecipeListSearch = (props) => {
         })
         .then(update)
     }
+
     const update = () => {
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes?_expand=user")
             .then(res => res.json())
@@ -73,7 +59,7 @@ export const RecipeListSearch = (props) => {
             <div className="recipe-list-header">
                 <h3>Search Recipes</h3>
             </div>
-            <section className="recipe-container">
+        <section className="recipe-container">
             { 
                 recipes.map(
                     (recipe) => {
@@ -119,7 +105,6 @@ export const RecipeListSearch = (props) => {
                                         <div className="postButtons">
                                             <div id="favoriteButton">
                                                 {liked}
-                                                
                                             </div>
                                         </div>
                                     </article>
@@ -127,10 +112,10 @@ export const RecipeListSearch = (props) => {
                             </div>
                         } 
                     }
-                    )
-                }
-                </section>
-            </section>
-        </>
+                )
+            }
+        </section>
+    </section>
+    </>
     )
 }

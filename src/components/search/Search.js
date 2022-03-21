@@ -7,15 +7,16 @@ import "./Search.css"
 
 
 
-export const SearchBar = (props) => {
+export const SearchBar = () => {
     const [searchInput, setSearchInput] = useState("")
+    // sets search view state to recipes by default
     const [recipeView, setRecipeView] = useState(true)
-
+    // set up state options for search view between recipe name and ingredients
     const items =[
         {label: "Recipes", value: "recipes", hasValue: true},
         {label: "Ingredients", value: "ingredients", hasValue: false},
     ]
-
+    // outputs a search bar input field and drop down to toggle search views
     const RecipeSearch = () => {
 
         return (
@@ -43,34 +44,30 @@ export const SearchBar = (props) => {
             </>
         )
     }
-
     const setView = (e) => {
-        // debugger
         if (recipeView !== parseInt(e.hasValue)) {
             setRecipeView(e.hasValue)
         } 
     }
     
     const DropDown = () => {
-        
         return <div className="selector">
             <Select options={items} value={items.value} onChange={setView}/>
         </div>
     }
+    // returns search components and sets which view user sees
     return (
         <>
             <div className="search-container">
-            <DropDown/>
-            <RecipeSearch />
+                <DropDown/>
+                <RecipeSearch />
             </div>
-            {/* <SearchListIngredients searchInput={searchInput}/> */}
             {
                 recipeView ? 
                 <RecipeListSearch searchInput={searchInput} /> 
                 : 
                 <SearchListIngredients searchInput={searchInput}/>
             }
-            {/* <RecipeListSearch searchInput={searchInput} /> */}
         </>
         )
 }

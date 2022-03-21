@@ -4,29 +4,25 @@ import { getAllRecipes } from "../../ApiManager";
 import { Ingredients } from "./Ingredients";
 import "./RecipeForm.css"
 import { Steps } from "./Steps";
+
+// function outputs the main component for a new recipe 
 export const RecipeForm = () => {
-    // get recipe list
+    const history = useHistory()
+    // set up needed states - recipe, recipes, ingredients, steps
     const [recipes, setRecipes] = useState([])
-    // recipe state with name, memory, photo, userid
+    const [ingredients, setIngredients] = useState([])
+    const [steps, setSteps] = useState([])
     const [recipe, update] = useState({
         name: "",
         memory: "",
         photo: "",
         userId: null
     });
-    // -----------------------------------------Hello, David.
-    // ingredient list state
-    const [ingredients, setIngredients] = useState([])
-    // steps list state
-    const [steps, setSteps] = useState([])
 
-    // fetch recipes with expanded user
-    const history = useHistory()
     useEffect(
         () => {
             getAllRecipes()
                 .then((data) => {
-                    // set recipe state with data from API
                     setRecipes(data)
                 })
         },
@@ -53,7 +49,6 @@ export const RecipeForm = () => {
         }
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/recipes", fetchOption)
             .then(sendSteps)
-            
     }
     // iterates steps to send individual objects to API
     const sendSteps = () => {
@@ -62,9 +57,8 @@ export const RecipeForm = () => {
         }
         sendIngredients()
     }
-    // sends object to API
+    // sends single object to API
     const saveSteps = (step) => {
-        // use fetch method POST to send object into API
         const fetchOption = {
             method: "POST",
             headers: {
@@ -78,7 +72,6 @@ export const RecipeForm = () => {
     
     // save ingredients
     const saveIngredients = (ingredient) => {
-        // use fetch method POST to send object into API
         const fetchOption = {
             method: "POST",
             headers: {
@@ -94,7 +87,6 @@ export const RecipeForm = () => {
         for (const ingredient of ingredients) {
             saveIngredients(ingredient)
             }
-            
         history.push("/recipes")
     }
 
@@ -103,11 +95,10 @@ export const RecipeForm = () => {
     return (
         <form className="recipe-form">
             <h2 className="recipeForm__title">New Recipe</h2>
-            
             <fieldset>
                 {/* --------recipe name ---------- */}
                 <div className="form-group-recipe">
-                <h3 className="recipe-name">Recipe Name</h3>
+                    <h3 className="recipe-name">Recipe Name</h3>
                     <input
                         required autoFocus
                         type="text"
@@ -137,14 +128,10 @@ export const RecipeForm = () => {
                         className="memory"
                         value={recipe.memory}
                         placeholder="Write your memory here..."
-                        // listens for state change
                         onChange={
                             (evt) => {
-                                // copy state
                                 const copy = {...recipe}
-                                // modify copy of state with user input value
                                 copy.memory = evt.target.value
-                                // update state with new state
                                 update(copy)
                             }
                         } />
@@ -160,14 +147,10 @@ export const RecipeForm = () => {
                         className="form-photo"
                         placeholder="Photo URL"
                         value={recipe.photo}
-                        // listens for state change
                         onChange={
                             (evt) => {
-                                // copy state
                                 const copy = {...recipe}
-                                // modify copy of state with user input value
                                 copy.photo = evt.target.value
-                                // update state with new state
                                 update(copy)
                             }
                         } />
@@ -175,23 +158,23 @@ export const RecipeForm = () => {
             </fieldset>
             <section className="steps-ingredients-container">
             {/* --------------steps container-------------- */}
-            <div className="steps-container">
-                <h3 className="steps-and-ingredients-labels">STEPS</h3>
-                <Steps
-                    steps = {steps}
-                    setSteps = {setSteps}
-                    recipes = {recipes}
-                    />
-            </div>
-            {/* --------------ingredients container-------------- */}
-            <div className="steps-container">
-                <h3 className="steps-and-ingredients-labels">INGREDIENTS</h3>
-                        <Ingredients
-                            ingredients = {ingredients}
-                            setIngredients = {setIngredients}
-                            recipes = {recipes}
-                            />
-            </div>
+                <div className="steps-container">
+                    <h3 className="steps-and-ingredients-labels">STEPS</h3>
+                    <Steps
+                        steps = {steps}
+                        setSteps = {setSteps}
+                        recipes = {recipes}
+                        />
+                </div>
+                {/* --------------ingredients container-------------- */}
+                <div className="steps-container">
+                    <h3 className="steps-and-ingredients-labels">INGREDIENTS</h3>
+                            <Ingredients
+                                ingredients = {ingredients}
+                                setIngredients = {setIngredients}
+                                recipes = {recipes}
+                                />
+                </div>
             </section>
             {/* button for submit with onClick event listener that calls saveTicket (POST to API) */}
             <button className="btn btn-primary" id="save-recipe" onClick={saveRecipe}>
