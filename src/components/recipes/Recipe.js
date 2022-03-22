@@ -5,6 +5,7 @@ import { getAllComments, getAllIngredients, getAllSteps, getAllUsers, getUserRec
 import { CommentForm } from "../comments/CommentForm";
 import { Comments } from "../comments/Comments";
 import { ForkedRecipeList } from "../forked/ForkedRecipe";
+import { StarRating } from "../user/StarRating";
 import "./Recipe.css"
 // functions responsibility is to make a single representation of the recipe user clicked on
 export const Recipe = () => {
@@ -25,7 +26,7 @@ export const Recipe = () => {
                     setRecipes(data)
                 })
         },
-        [recipeId]
+        [recipeId] 
     )
     useEffect(
         () => {
@@ -61,6 +62,8 @@ export const Recipe = () => {
 
                     <h4 className="post-title"> {recipe.name}</h4>
                     {/* ingredient and step lists */}
+                    <StarRating
+                    users={users}/>
                     <div className="ingredients-and-steps-container">
                         <div className="ingredients">
                             <h3 className="listing">Ingredient List:</h3>
@@ -121,7 +124,8 @@ export const Recipe = () => {
             </section>
             <section className="forked-recipe-list">
                 <ForkedRecipeList
-                users = {users}/>
+                users = {users}
+                recipeId = {recipeId}/>
             </section>
         </>
     )

@@ -1,0 +1,17 @@
+
+#star-buttons {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: .2em;
+    padding: .4em;
+    font-size: x-large;
+    text-shadow: 2px 2px rgba(128, 123, 123, 0.411);
+  }
+  .on {
+    color: rgb(0, 0, 0);
+  }
+  .off {
+    color: #ccc;
+  }
