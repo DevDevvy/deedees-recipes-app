@@ -11,7 +11,7 @@ export const StarRating = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/users/${userId}?_embed=rating`)
+            fetch(`https://deedees-api-qdte8.ondigitalocean.app/users/${userId}?_embed=rating`)
                 .then(res => res.json())
                 .then((data) => {
                     // break down into smaller steps
@@ -26,7 +26,7 @@ export const StarRating = () => {
     )
     
     const update = () => {
-        fetch(`http://localhost:8088/users/${userId}?_embed=rating`)
+        fetch(`https://deedees-api-qdte8.ondigitalocean.app/users/${userId}?_embed=rating`)
             .then(res => res.json())
             .then((data) => {
                 // break down into smaller steps
@@ -54,7 +54,7 @@ export const StarRating = () => {
                 },
                 body: JSON.stringify(newRating)
             }
-            return fetch("http://localhost:8088/rating", fetchOption)
+            return fetch("https://deedees-api-qdte8.ondigitalocean.app/rating", fetchOption)
                 .then(update)
         } else {
             // if rating object is found, use PUT to change object rating value
@@ -71,7 +71,7 @@ export const StarRating = () => {
                 },
                 body: JSON.stringify(newRating)
             }
-            return fetch(`http://localhost:8088/rating/${id}`, fetchOption)
+            return fetch(`https://deedees-api-qdte8.ondigitalocean.app/rating/${id}`, fetchOption)
                 .then(update)
         }
     }
