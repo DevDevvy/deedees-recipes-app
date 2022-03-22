@@ -3,45 +3,50 @@ import { useState, useEffect } from "react";
 import "./StarRating.css"
 import { useParams } from "react-router";
 
-export const StarRating = ({users}) => {
+export const StarRating = () => {
     const recipeId = useParams()
-    const [rating, setRating] = useState(0);
-    const [ratings, setRatings] = useState([])
+    const [userRating, setRating] = useState({});
     const userId = parseInt(localStorage.getItem("recipe_user"))
     
 
     useEffect(
         () => {
-            fetch(`https://deedees-api-qdte8.ondigitalocean.app/rating?userId=${userId}`)
+            fetch(`http://localhost:8088/users/${userId}?_embed=rating`)
                 .then(res => res.json())
-                .then((data) => {setRating(data[0]?.rating)})
-            },
-        [userId]
-    )
-    useEffect(
-        () => {
-            fetch(`https://deedees-api-qdte8.ondigitalocean.app/rating`)
-                .then(res => res.json())
-                .then((data) => {setRatings(data)})
+                .then((data) => {
+                    // break down into smaller steps
+                    const ratingArray = data.rating
+                    const id = parseInt(recipeId.recipeId)
+                    const foundRating = ratingArray?.find(rate => rate.recipeId === id)
+                    
+                    setRating(foundRating)
+                    })
             },
         []
     )
     
-    
-    // debugger
-    const sendStarRating = (ratingNumber) => {
-        // check if there is a rating object associated with user...
-        const foundRating = ratings.find(rating => rating.userId === userId)
-        // if not, make a new rating object to send to api
-        if (!foundRating) {
-            // make new rating object
-            const newRating = {
+    const update = () => {
+        fetch(`http://localhost:8088/users/${userId}?_embed=rating`)
+            .then(res => res.json())
+            .then((data) => {
+                // break down into smaller steps
+                const ratingArray = data.rating
+                const id = parseInt(recipeId.recipeId)
+                const foundRating = ratingArray?.find(rate => rate.recipeId === id)
                 
+                setRating(foundRating)
+                }
+            )
+    }
+    // API calls for rating system when rating button pushed
+    const sendStarRating = (ratingNumber) => {
+        // check if user has a rating, if not- POST new object
+        if (!userRating) {
+            const newRating = {
                 recipeId: parseInt(recipeId.recipeId),
                 rating: ratingNumber,
                 userId: userId
             }
-            debugger
             const fetchOption = {
                 method: "POST",
                 headers: {
@@ -49,22 +54,25 @@ export const StarRating = ({users}) => {
                 },
                 body: JSON.stringify(newRating)
             }
-            return fetch("https://deedees-api-qdte8.ondigitalocean.app/rating", fetchOption)
-                .then((data) => {setRating(ratingNumber)})
+            return fetch("http://localhost:8088/rating", fetchOption)
+                .then(update)
         } else {
-            // if rating object is found, use PUT to change object values
-            const copy = foundRating
-            copy.rating = ratingNumber
-            const id = foundRating.id
+            // if rating object is found, use PUT to change object rating value
+            const newRating = {
+                recipeId: parseInt(recipeId.recipeId),
+                rating: ratingNumber,
+                userId: userId
+            }
+            const id = userRating.id
             const fetchOption = {
                 method: "PUT",
                 headers: {
                     "Content-Type" : "application/json"
                 },
-                body: JSON.stringify(copy)
+                body: JSON.stringify(newRating)
             }
-            return fetch(`https://deedees-api-qdte8.ondigitalocean.app/rating/${id}`, fetchOption)
-                .then((data) => {setRating(ratingNumber)})
+            return fetch(`http://localhost:8088/rating/${id}`, fetchOption)
+                .then(update)
         }
     }
     
@@ -78,7 +86,7 @@ export const StarRating = ({users}) => {
                 id="star-buttons"
                 type="button"
                 key={index}
-                className={index <= rating ? "on" : "off"}
+                className={index <= userRating?.rating ? "on" : "off"}
                 onClick={() => sendStarRating(index)}>
                 <span className="star">&#9733;</span>
             </button>

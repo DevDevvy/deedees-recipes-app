@@ -58,31 +58,7 @@ export const RecipeForm = () => {
         }
         sendIngredients()
     }
-    // sends single object to API
-    // const saveSteps = (step) => {
-    //     const fetchOption = {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type" : "application/json"
-    //         },
-    //         body: JSON.stringify(step)
-    //     }
-    //     return fetch("https://deedees-api-qdte8.ondigitalocean.app/steps", fetchOption)
-        
-    // }
     
-    // // save ingredients
-    // const saveIngredients = (ingredient) => {
-    //     const fetchOption = {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type" : "application/json"
-    //         },
-    //         body: JSON.stringify(ingredient)
-    //     }
-    //     return fetch("https://deedees-api-qdte8.ondigitalocean.app/ingredients", fetchOption)
-            
-    //     }
         // iterates through ingredients to send to API one by one
     const sendIngredients = () => {
         for (const ingredient of ingredients) {
