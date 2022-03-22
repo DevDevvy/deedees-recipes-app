@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import "./RecipeList.css"
 import hollow from "./hollow.svg"
 import solid from "./solid.svg"
-import { apiDelete, getAllLikes, getAllRecipesWithSteps, getAllSteps } from "../../ApiManager";
+import { apiDelete, getAllLikes, getAllRatings, getAllRecipesWithSteps, getAllSteps } from "../../ApiManager";
 import AOS from 'aos'
 import "aos/dist/aos.css"
 
@@ -14,6 +14,7 @@ export const RecipeList = () => {
     const [recipes, setRecipes] = useState([])
     const [likesArray, setLikes] = useState([])
     const [steps, setSteps] = useState([])
+    const [ratings, setRatings] = useState([])
     const history = useHistory()
 
 // use effect fetches recipes with expanded users from API
@@ -25,6 +26,8 @@ export const RecipeList = () => {
                 .then((data) => {setSteps(data)})
                 .then(getAllLikes)
                 .then((data) => {setLikes(data)})
+                .then(getAllRatings)
+                .then((data) => {setRatings(data)})
         },
         []
     )
@@ -78,6 +81,15 @@ export const RecipeList = () => {
             {
                 recipes.map(
                     (recipe) => {
+                        // get all ratings for recipe, map out ratings in array, find average rating
+                        const ratingsObjectArray = ratings.filter(rating => rating.recipeId === recipe.id)
+                        const ratingsArray = ratingsObjectArray.map(rating => rating.rating)
+                        const initValue = 0
+                        const addedRatings = ratingsArray.reduce(
+                            (prev, current) => prev + current, initValue
+                        )
+                        const averageRating = (addedRatings / ratingsArray.length)
+                        
                         const foundUserId = parseInt(localStorage.getItem("recipe_user"))
                         // get all steps.time for recipe into array to extract time
                         const stepsArray = steps.filter(step => step.recipeId === recipe.id)
@@ -110,9 +122,20 @@ export const RecipeList = () => {
                         return <div data-aos="fade-up" key={`recipe--${recipe.id}`} className="recipe-div">
                                 {/* link to recipe page */}
                                 <div className="parent">
-                                    <Link data-aos="slide-right" to={`/recipes/${recipe.id}`} key={`recipe--${recipe.id}`} >
+                                    <Link data-aos="slide-right" 
+                                        to={`/recipes/${recipe.id}`} 
+                                        key={`recipe--${recipe.id}`} >
                                     {/* title */}
-                                    <h4 className="post-title">{recipe.name} by {recipe.user.name} <div className="minutes">{minuteAdder()} min.</div></h4></Link>
+                                            <h4 className="post-title">
+                                            {recipe.name} by {recipe.user.name} 
+                                            <div className="minutes">
+                                                {minuteAdder()} min.
+                                            </div>
+                                            <div className="minutes">
+                                            &#9733; {averageRating} 
+                                            </div>
+                                            </h4>
+                                    </Link>
                                 </div>
                                 {/* image */}
                                 <div  data-aos="slide-left" className="image-container">

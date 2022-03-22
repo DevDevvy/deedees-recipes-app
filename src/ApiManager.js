@@ -46,6 +46,15 @@ export const getAllUsers = () => {
     return fetch("https://deedees-api-qdte8.ondigitalocean.app/users")
         .then(res => res.json())
 }
+
+export const getUsersRatings = (userId) => {
+    return fetch(`https://deedees-api-qdte8.ondigitalocean.app/users/${userId}?_embed=rating`)
+        .then(res => res.json())
+}
+export const getAllRatings = () => {
+    return fetch(`https://deedees-api-qdte8.ondigitalocean.app/rating`)
+        .then(res => res.json())
+}
 export const apiDelete = (id) => {
     return fetch(`https://deedees-api-qdte8.ondigitalocean.app/likes/${id}`, {
         method: "DELETE"

@@ -2,17 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./StarRating.css"
 import { useParams } from "react-router";
+import { getUsersRatings } from "../../ApiManager";
+
 
 export const StarRating = () => {
     const recipeId = useParams()
     const [userRating, setRating] = useState({});
     const userId = parseInt(localStorage.getItem("recipe_user"))
     
-
     useEffect(
         () => {
-            fetch(`https://deedees-api-qdte8.ondigitalocean.app/users/${userId}?_embed=rating`)
-                .then(res => res.json())
+            getUsersRatings(userId)
                 .then((data) => {
                     // break down into smaller steps
                     const ratingArray = data.rating
@@ -26,8 +26,7 @@ export const StarRating = () => {
     )
     
     const update = () => {
-        fetch(`https://deedees-api-qdte8.ondigitalocean.app/users/${userId}?_embed=rating`)
-            .then(res => res.json())
+        getUsersRatings(userId)
             .then((data) => {
                 // break down into smaller steps
                 const ratingArray = data.rating
@@ -41,7 +40,7 @@ export const StarRating = () => {
     // API calls for rating system when rating button pushed
     const sendStarRating = (ratingNumber) => {
         // check if user has a rating, if not- POST new object
-        if (!userRating) {
+        if (!userRating.rating) {
             const newRating = {
                 recipeId: parseInt(recipeId.recipeId),
                 rating: ratingNumber,
@@ -58,25 +57,22 @@ export const StarRating = () => {
                 .then(update)
         } else {
             // if rating object is found, use PUT to change object rating value
-            const newRating = {
-                recipeId: parseInt(recipeId.recipeId),
-                rating: ratingNumber,
-                userId: userId
-            }
+            
+            
+            userRating.rating = ratingNumber
             const id = userRating.id
             const fetchOption = {
                 method: "PUT",
                 headers: {
                     "Content-Type" : "application/json"
                 },
-                body: JSON.stringify(newRating)
+                body: JSON.stringify(userRating)
             }
             return fetch(`https://deedees-api-qdte8.ondigitalocean.app/rating/${id}`, fetchOption)
                 .then(update)
         }
     }
     
-
     return (
         <div className="star-rating">
         {[...Array(5)].map((star, index) => {
