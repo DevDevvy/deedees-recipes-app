@@ -70,15 +70,14 @@
 ## About The Project
 FEATURES:
  <ul>
-    <li>Create a new recipe</li>
-    <li>Link to a photo of your recipe</li>
-    <li>Share your memory of the recipe</li>
-    <li>Edit your recipes</li>
-    <li>Like/save someone else's recipe</li>
+    <li>Create/edit/delete a new recipe</li>
+    <li>Recipe features a photo and a memory</li>
+    <li>Rate each recipe up to 5 stars</li>
+    <li>Aggregated time to make, and star rating calculated</li>
+    <li>Like/save someone else's recipe to your home page</li>
     <li>Comment under any recipe</li>
     <li>Fork someone else's recipe and make changes</li>
     <li>Search by recipe name or ingredient</li>
-    <li>Browse a list of all submitted recipes</li>
     
   </ul>
 <div align="center">
