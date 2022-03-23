@@ -33,7 +33,7 @@ export const ForkRecipe = () => {
     const handleDeleteFieldsSteps = (event, index) => {
     event.preventDefault()
     const values = [...steps];
-    values.splice(index, 1)
+    values.pop()
     setSteps(values);
     };
     // adds empty field for ingredients
@@ -189,11 +189,17 @@ export const ForkRecipe = () => {
                     setSteps={setSteps}
                     handleDeleteFieldsSteps={handleDeleteFieldsSteps}
                     />
-                <button 
-                    className="add-step" 
-                    onClick={(e) => handleAddFieldsSteps(e)}
-                    >+</button>
-            </fieldset>
+                    <div className="button-container">
+                        <button
+                            className="delete-step"
+                            onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
+                            >-</button>
+                        <button 
+                            className="add-step" 
+                            onClick={(e) => handleAddFieldsSteps(e)}
+                            >+</button>
+                    </div>
+                </fieldset>
             </div>
             <div className="step-container">
             <fieldset className="steps-container">
@@ -204,6 +210,11 @@ export const ForkRecipe = () => {
                 handleDeleteFieldsIngredients={handleDeleteFieldsIngredients}
             />
                 <div className="button-container">
+                    <button
+                        className="delete-step"
+                        onClick={(event) => handleDeleteFieldsIngredients(event)}
+                    >-
+                    </button>
                     <button
                         className="add-step"
                         onClick={(event) => handleAddFieldsIngredients(event)}

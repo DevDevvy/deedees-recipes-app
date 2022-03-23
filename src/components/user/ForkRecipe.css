@@ -14,8 +14,9 @@
 .steps-ingredients-container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
-    gap: 60px;
+    gap: 30px;
 }
 .steps {
     padding: .5em;
@@ -45,3 +46,11 @@
 .forked-recipe-container {
     width: 80%;
 }
+
+@media screen and (min-width: 1000px) {
+    .steps-ingredients-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    }
