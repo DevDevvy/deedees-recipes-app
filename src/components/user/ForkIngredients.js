@@ -42,11 +42,7 @@ export const ForkedIngredients = ({ingredients, setIngredients, handleDeleteFiel
                 setIngredients(copy);
             }}
         />
-        <button
-                        className="delete-step"
-                        onClick={(event) => handleDeleteFieldsIngredients(event)}
-                    >-
-                    </button>
+        
     </div>
     
     ))}

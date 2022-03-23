@@ -35,12 +35,7 @@ export const ForkedSteps = ({steps, setSteps, handleDeleteFieldsSteps}) => {
                             setSteps(copy);
                         }}
                     />
-                    <div className="button-container">
-                        <button
-                            className="delete-step"
-                            onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
-                            >-</button>
-                    </div>
+                    
                 </div>
                 );
             })

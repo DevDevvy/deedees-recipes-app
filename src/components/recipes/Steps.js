@@ -24,9 +24,9 @@ export const Steps = (props) => {
         ])
     }
     // deletes step
-    const handleDeleteFields = (index) => {
+    const handleDeleteFields = () => {
         const values = [...inputFields]
-        values.splice(index, 1)
+        values.pop()
         setInputField(values)
     }
 
@@ -88,17 +88,18 @@ export const Steps = (props) => {
                             }
                         }
                     } />
-                    <div className="ing-buttons">
+                    
+                </div>
+            ))}
+            <div className="ing-buttons">
                     {/* add/delete field buttons */}
                     <button className="add-step"
                         onClick={() => handleAddFields()}
                     >+</button>
                     <button className="delete-step"
-                        onClick={() => handleDeleteFields(index)}
+                        onClick={() => handleDeleteFields()}
                     >-</button>
                     </div>
-                </div>
-            ))}
         </fieldset>
         
     </section>
