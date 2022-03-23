@@ -34,7 +34,15 @@ export const RecipeList = () => {
     // triggers AOS animations
     useEffect(
         () => {
-            AOS.init({duration: 2000})
+            AOS.init({
+                duration: 2000,
+                // disables animation on page break for large screens
+                // layout becomes rows instead of a column
+                disable: ()=> {
+                    const minWidth = 1400
+                    return window.innerWidth > minWidth
+                }
+            })
             AOS.refresh()
         },
         []
@@ -89,7 +97,7 @@ export const RecipeList = () => {
                             (prev, current) => prev + current, initValue
                         )
                         const averageRating = (addedRatings / ratingsArray.length)
-                        
+                        const roundedRatings = Math.round(averageRating * 10) / 10
                         const foundUserId = parseInt(localStorage.getItem("recipe_user"))
                         // get all steps.time for recipe into array to extract time
                         const stepsArray = steps.filter(step => step.recipeId === recipe.id)
@@ -122,7 +130,7 @@ export const RecipeList = () => {
                         return <div data-aos="fade-up" key={`recipe--${recipe.id}`} className="recipe-div">
                                 {/* link to recipe page */}
                                 <div className="parent">
-                                    <Link data-aos="slide-right" 
+                                    <Link className="link-name" data-aos="slide-right" 
                                         to={`/recipes/${recipe.id}`} 
                                         key={`recipe--${recipe.id}`} >
                                     {/* title */}
@@ -133,7 +141,7 @@ export const RecipeList = () => {
                                                     {minuteAdder()} min.
                                                 </div>
                                                 <div className="minutes">
-                                                &#9733; {averageRating} 
+                                                {roundedRatings} &#9733;
                                                 </div>
                                             </div>
                                             </h4>

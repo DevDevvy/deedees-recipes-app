@@ -77,7 +77,7 @@ export const RecipeForm = () => {
                 <div className="form-group-recipe">
                     <h3 className="recipe-name">Recipe Name</h3>
                     <input
-                        required autoFocus
+                        required 
                         type="text"
                         className="form-control-recipe"
                         placeholder="Recipe Name Here"
@@ -100,7 +100,7 @@ export const RecipeForm = () => {
                 <div className="form-group-memory">
                     <h3 className="memory-title">Memory</h3>
                     <textarea
-                        required autoFocus
+                        required 
                         type="text"
                         className="memory"
                         value={recipe.memory}
@@ -119,7 +119,7 @@ export const RecipeForm = () => {
                 <div className="form-group-recipe">
                     <label htmlFor="photo"><h3>Photo</h3></label>
                     <input
-                        required autoFocus
+                        required 
                         type="text"
                         className="form-photo"
                         placeholder="Photo URL"

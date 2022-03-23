@@ -103,7 +103,7 @@ export const EditRecipe = () => {
                 <div className="form-group-recipe">
                     <h3 className="memory-title">Memory</h3>
                     <textarea
-                        required autoFocus
+                        required 
                         type="text"
                         className="memory"
                         // gets value from state to display in edit window

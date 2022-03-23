@@ -56,8 +56,8 @@ export const Recipe = () => {
             <div className="recipe-list-header">
                 <h3><q>Good cookin', good lookin!'</q></h3>
             </div>
-            <section className="recipe-container">
-                <div key={`recipe--${recipe.id}`} className="recipe-div">
+            <section className="single-recipe-container">
+                <div key={`recipe--${recipe.id}`} className="single-recipe-div">
                         {/* title */}
 
                     <h4 className="post-title"> {recipe.name}</h4>
@@ -95,8 +95,8 @@ export const Recipe = () => {
                         </div>
                     </div>
                     {/* image */}
-                    <section className="image-container">
-                        <img className="post-image" src={recipe.photo} alt="Photo of Food" />
+                    <section className="single-image-container">
+                        <img className="single-post-image" src={recipe.photo} alt="Photo of Food" />
                     </section>
                     {/* story */}
                     <section className="story-conatiner">

@@ -1,0 +1,9 @@
+.forked-recipe-div {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    margin: 1em 5em;
+    align-items: center;
+    box-shadow: 3px 3px 8px 0px;
+    border-radius: 15px;
+}

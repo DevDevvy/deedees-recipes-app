@@ -28,25 +28,22 @@ export const ForkedSteps = ({steps, setSteps, handleDeleteFieldsSteps}) => {
                         className="step"
                         placeholder="Step"
                         value={steps[index].step}
-                    // listens for state change
                         onChange={(evt) => {
-                            // copy state
                             const copy = [...steps];
                             copy[index].step = evt.target.value;
                             copy.stepNumber = index + 1
-                            
                             setSteps(copy);
                         }}
                     />
                     <div className="button-container">
-                
-                <button
-                    className="delete-step"
-                    onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
-                    >-</button>
-                </div>
+                        <button
+                            className="delete-step"
+                            onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
+                            >-</button>
                     </div>
+                </div>
                 );
-                })}
+            })
+        }
     </>
 }
