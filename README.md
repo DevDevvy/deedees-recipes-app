@@ -137,9 +137,9 @@ Project Link: [https://github.com/DevDevvy/deedees-recipes-app](https://github.c
 ## Acknowledgments
 
 * [Nashville Software School](https://nashvillesoftwareschool.com/) - Special thank you to (Scrum Master) "Coach" Steve, Tyler and Devin
-* [AOS Scroll Animations](https://michalsnik.github.io/aos/)
-* [React Select](https://react-select.com/home)
-* [CSS Tricks Flexbox Guide]()
+* [AOS Scroll Animations](https://michalsnik.github.io/aos/) - Animation on scroll for recipe list
+* [React Select](https://react-select.com/home) - Toggle between searching reipes or ingredients
+* [CSS Tricks Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - My best friend since I did 90% off the CSS from scratch
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
