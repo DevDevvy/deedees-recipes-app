@@ -25,9 +25,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/DevDevvy/deedees-recipes-app">
-    <img src="images/deedees-recipes-logo.png" alt="Logo" width="700" height="auto">
-  </a>
+  
+    
 
 <h3 align="center">DeeDee's Recipes</h3>
 
@@ -71,15 +70,14 @@
 ## About The Project
 FEATURES:
  <ul>
-    <li>Create a new recipe</li>
-    <li>Link to a photo of your recipe</li>
-    <li>Share your memory of the recipe</li>
-    <li>Edit your recipes</li>
-    <li>Like/save someone else's recipe</li>
+    <li>Create/edit/delete a new recipe</li>
+    <li>Recipe features a photo and a memory</li>
+    <li>Rate each recipe up to 5 stars</li>
+    <li>Aggregated time to make, and star rating calculated</li>
+    <li>Like/save someone else's recipe to your home page</li>
     <li>Comment under any recipe</li>
     <li>Fork someone else's recipe and make changes</li>
     <li>Search by recipe name or ingredient</li>
-    <li>Browse a list of all submitted recipes</li>
     
   </ul>
 <div align="center">
@@ -139,9 +137,9 @@ Project Link: [https://github.com/DevDevvy/deedees-recipes-app](https://github.c
 ## Acknowledgments
 
 * [Nashville Software School](https://nashvillesoftwareschool.com/) - Special thank you to (Scrum Master) "Coach" Steve, Tyler and Devin
-* [AOS Scroll Animations](https://michalsnik.github.io/aos/)
-* [React Select](https://react-select.com/home)
-* [CSS Tricks Flexbox Guide]()
+* [AOS Scroll Animations](https://michalsnik.github.io/aos/) - Animation on scroll for recipe list
+* [React Select](https://react-select.com/home) - Toggle between searching reipes or ingredients
+* [CSS Tricks Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - My best friend since I did 90% off the CSS from scratch
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
