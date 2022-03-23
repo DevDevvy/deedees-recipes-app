@@ -6,7 +6,7 @@ import "./Search.css"
 
 
 export const SearchBar = () => {
-    
+
     const [searchInput, setSearchInput] = useState("")
     // sets search view state to recipes by default
     const [recipeView, setRecipeView] = useState(true)
@@ -25,7 +25,6 @@ export const SearchBar = () => {
                         <div className="form-group">
                             
                             <input
-                                autoFocus
                                 type="text"
                                 className="search-control"
                                 placeholder="Search here..."
