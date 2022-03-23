@@ -40,7 +40,7 @@ export const StarRating = () => {
     // API calls for rating system when rating button pushed
     const sendStarRating = (ratingNumber) => {
         // check if user has a rating, if not- POST new object
-        if (!userRating.rating) {
+        if (!userRating) {
             const newRating = {
                 recipeId: parseInt(recipeId.recipeId),
                 rating: ratingNumber,
