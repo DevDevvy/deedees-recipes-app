@@ -25,7 +25,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/DevDevvy/deedees-recipes-app">
+  
     <img src="images/deedees-recipes-logo.png" alt="Logo" width="700" height="auto">
   </a>
 
