@@ -92,6 +92,26 @@ export const RecipeForm = () => {
                                 // update state with new state
                                 update(copy)
                             }
+                        } 
+                    />
+                </div>
+            </fieldset>
+            <fieldset className="recipe-photo">
+                {/* --------recipe photo-------- */}
+                <div className="form-group-recipe">
+                    <label htmlFor="photo"><h3>Photo</h3></label>
+                    <input
+                        required 
+                        type="text"
+                        className="form-photo"
+                        placeholder="Photo URL"
+                        value={recipe.photo}
+                        onChange={
+                            (evt) => {
+                                const copy = {...recipe}
+                                copy.photo = evt.target.value
+                                update(copy)
+                            }
                         } />
                 </div>
             </fieldset>
@@ -109,25 +129,6 @@ export const RecipeForm = () => {
                             (evt) => {
                                 const copy = {...recipe}
                                 copy.memory = evt.target.value
-                                update(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset className="recipe-photo">
-                {/* --------recipe photo-------- */}
-                <div className="form-group-recipe">
-                    <label htmlFor="photo"><h3>Photo</h3></label>
-                    <input
-                        required 
-                        type="text"
-                        className="form-photo"
-                        placeholder="Photo URL"
-                        value={recipe.photo}
-                        onChange={
-                            (evt) => {
-                                const copy = {...recipe}
-                                copy.photo = evt.target.value
                                 update(copy)
                             }
                         } />
