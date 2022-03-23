@@ -62,7 +62,7 @@ export const Steps = (props) => {
                     } />
                     {/* step */}
                     <input
-                    required autoFocus
+                    required 
                     type="text"
                     className="step"
                     placeholder={`Step ${index + 1} `}

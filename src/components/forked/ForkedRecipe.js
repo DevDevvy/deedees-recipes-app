@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router"
+import "./ForkedRecipe.css"
 import { getAllForkedIngredients, getAllForkedRecipes, getAllForkedSteps } from "../../ApiManager"
 
 // finds all forked recipes that are related to current recipe
@@ -38,10 +39,10 @@ export const ForkedRecipeList = ({users}) => {
                 const foundUser = users?.find(user => user.id === recipe.userId)
                 // put steps list in order for final output
                 const orderedSteps = foundSteps.sort((a, b) =>  a.stepNumber - b.stepNumber)
-                return <div key={`recipe--${recipe.id}`} className="recipe-div">
+                return <div key={`recipe--${recipe.id}`} className="forked-recipe-div">
                         <h2>Forked Recipes</h2>
                         {/* title */}
-                        <h4 className="post-title"> {recipe.name} by {foundUser?.name}</h4>
+                        <h4 className="forked-post-title"> {recipe.name} by {foundUser?.name}</h4>
                         {/* ingredient and step lists */}
                                {/* story */}
                             <section className="story-conatiner">
@@ -51,7 +52,7 @@ export const ForkedRecipeList = ({users}) => {
                                 </article>
                             </section>
                         <div className="ingredients-and-steps-container">
-                            <div className="ingredients">
+                            <div className="forked-ingredients">
                                 <h4>Ingredient List:</h4>
                                 <ul>
                                     {
@@ -62,7 +63,7 @@ export const ForkedRecipeList = ({users}) => {
                                         } 
                                 </ul>
                             </div>
-                            <div className="steps">
+                            <div className="forked-steps">
                                 <h4>Steps:</h4>
                                 <ol>
                                     {

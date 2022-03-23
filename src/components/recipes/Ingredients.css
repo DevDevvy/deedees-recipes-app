@@ -27,6 +27,7 @@
 /* box containing ingredient list */
 .ingredients {
     box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+    min-width: 40%;
 }
 /* single ingredient */
 .ingredient {

@@ -162,7 +162,7 @@ export const ForkRecipe = () => {
                 <div className="form-group-recipe">
                 <h3 className="memory-title">Memory/Message:</h3>
                 <textarea
-                    autoFocus
+                    
                     type="text"
                     placeholder="Memory or story here..."
                     className="memory"

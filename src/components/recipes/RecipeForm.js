@@ -77,7 +77,7 @@ export const RecipeForm = () => {
                 <div className="form-group-recipe">
                     <h3 className="recipe-name">Recipe Name</h3>
                     <input
-                        required autoFocus
+                        required 
                         type="text"
                         className="form-control-recipe"
                         placeholder="Recipe Name Here"
@@ -92,26 +92,8 @@ export const RecipeForm = () => {
                                 // update state with new state
                                 update(copy)
                             }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset className="memory-container">
-                {/* ------recipe memory------------ */}
-                <div className="form-group-memory">
-                    <h3 className="memory-title">Memory</h3>
-                    <textarea
-                        required autoFocus
-                        type="text"
-                        className="memory"
-                        value={recipe.memory}
-                        placeholder="Write your memory here..."
-                        onChange={
-                            (evt) => {
-                                const copy = {...recipe}
-                                copy.memory = evt.target.value
-                                update(copy)
-                            }
-                        } />
+                        } 
+                    />
                 </div>
             </fieldset>
             <fieldset className="recipe-photo">
@@ -119,7 +101,7 @@ export const RecipeForm = () => {
                 <div className="form-group-recipe">
                     <label htmlFor="photo"><h3>Photo</h3></label>
                     <input
-                        required autoFocus
+                        required 
                         type="text"
                         className="form-photo"
                         placeholder="Photo URL"
@@ -128,6 +110,25 @@ export const RecipeForm = () => {
                             (evt) => {
                                 const copy = {...recipe}
                                 copy.photo = evt.target.value
+                                update(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset className="memory-container">
+                {/* ------recipe memory------------ */}
+                <div className="form-group-memory">
+                    <h3 className="memory-title">Memory</h3>
+                    <textarea
+                        required 
+                        type="text"
+                        className="memory"
+                        value={recipe.memory}
+                        placeholder="Write your memory here..."
+                        onChange={
+                            (evt) => {
+                                const copy = {...recipe}
+                                copy.memory = evt.target.value
                                 update(copy)
                             }
                         } />
