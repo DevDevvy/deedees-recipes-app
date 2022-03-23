@@ -19,19 +19,29 @@
     display: flex;
     flex-direction: row;
 }
+
+.bubbles {
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
 .minutes {
     flex-direction: row-reverse;
     justify-content: center;
+    text-align: center;
     margin: .5em;
     padding: .5em;
-    box-shadow: 3px 3px 8px 0px;
+    box-shadow: 3px 3px 8px 0px, -3px -1px 4px 1px rgb(207, 203, 203);
     border-radius: 25px;
-    font-size: x-small;
+    font-size: 1vw;
     align-items: center;
     display: flex;
-    width: 6em;
-    max-height: 2em;
+    max-width: 3vw;
+    max-height: 2vw;
     background-color: rgb(252, 252, 252);
+
 }
 .post-image {
     width: 100%;
@@ -45,24 +55,25 @@
     margin: 1em 5em;
     align-items: center;
     box-shadow: 3px 3px 8px 0px;
-    border-radius: 5px;
-    border: 1px solid black;
+    border-radius: 15px;
+    /* border: 1px solid black; */
 
 }
 
 .recipe-div:nth-child(even) {
-    background-color: rgb(216, 234, 241);
+    background-color: #f0ebebd7
 }
 .recipe-div:nth-child(odd) {
-    background-color: rgba(241, 236, 235, 0.521);
+    background-color: rgba(223, 223, 240, 0.178);
 }
 
 .story {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     box-shadow: 1px 2px 5px;
     border-radius: 3px;
-    margin: 1em;
+    border-radius: 15px;
     padding: 2em 4em;
+    margin: 15px;
 }
 
 .story h3 {
@@ -81,13 +92,15 @@ a {
     color: rgb(54, 52, 52);
 }
 .post-title {
-    font-size: 2em;
+    font-size: 4vw;
     border-radius: 15px;
-    padding: .5em .8em;
+    padding: .5em .2em;
     margin: 0;
     display: flex;
+    
     box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
 }
+
 
 .favorite-button {
     width: 2em;
@@ -100,8 +113,35 @@ a {
     flex-direction: row-reverse;
 }
 
+/* small screens */
 @media screen and (max-width: 600px) {
     .recipe-div {
         margin: 7px;
     }
+    .post-title {
+        font-size: 7vw;
     }
+    .minutes {
+        min-height: 6vw;
+        min-width: 6vw;
+        font-size: 2vw;
+        
+    }
+    
+    
+}
+/* big screens */
+@media screen and (min-width: 1400px) {
+    .main-container {
+        padding: 3vw
+    }
+    .post-title {
+        font-size: 3vw;
+    }
+    .recipe-container {
+        margin: 7vw;
+    }
+    .recipe-title {
+        font-size: 4vw;
+    }
+  }

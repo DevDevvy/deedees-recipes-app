@@ -75,7 +75,7 @@ export const RecipeList = () => {
         <>
         <section className="main-container">
             <div className="recipe-list-header">
-                <h3>Recipes</h3>
+                <h3 className="recipe-title">Recipes</h3>
             </div>
             <section className="recipe-container">
             {
@@ -128,11 +128,13 @@ export const RecipeList = () => {
                                     {/* title */}
                                             <h4 className="post-title">
                                             {recipe.name} by {recipe.user.name} 
-                                            <div className="minutes">
-                                                {minuteAdder()} min.
-                                            </div>
-                                            <div className="minutes">
-                                            &#9733; {averageRating} 
+                                            <div className="bubbles">
+                                                <div className="minutes">
+                                                    {minuteAdder()} min.
+                                                </div>
+                                                <div className="minutes">
+                                                &#9733; {averageRating} 
+                                                </div>
                                             </div>
                                             </h4>
                                     </Link>
