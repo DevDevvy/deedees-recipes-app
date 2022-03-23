@@ -26,8 +26,7 @@
 <br />
 <div align="center">
   
-    <img src="images/deedees-recipes-logo.png" alt="Logo" width="700" height="auto">
-  </a>
+    
 
 <h3 align="center">DeeDee's Recipes</h3>
 
