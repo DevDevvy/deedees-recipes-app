@@ -111,7 +111,7 @@ export const RecipeList = () => {
                         let liked = ``
                         // find if there is a like for this recipe
                         const foundLike = likesArray.find(like => like.recipeId === recipe.id && like.userId === foundUserId )
-                        // switches between liked and unliked images
+                        // switches between liked and unliked icons
                         if (foundLike !== undefined) {
                             liked = 
                             <img className="favorite-button" 
@@ -125,6 +125,14 @@ export const RecipeList = () => {
                             id={`favorite--${recipe.id}`} 
                             src={hollow} alt="hollow heart"
                             onClick={()=> likeRecipe(recipe.id)}/>
+                        }
+                        // functions for if recipe is rated yet
+                        const rated = () => {
+                            return <div className="minutes">
+                            {roundedRatings} &#9733; </div>
+                        }
+                        const unrated = () => {
+                            return ""
                         }
                         
                         return <div data-aos="fade-up" key={`recipe--${recipe.id}`} className="recipe-div">
@@ -140,9 +148,7 @@ export const RecipeList = () => {
                                                 <div className="minutes">
                                                     {minuteAdder()} min.
                                                 </div>
-                                                <div className="minutes">
-                                                {roundedRatings} &#9733;
-                                                </div>
+                                                {averageRating ? rated() : unrated()}
                                             </div>
                                             </h4>
                                     </Link>
