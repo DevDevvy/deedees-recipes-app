@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import "./Steps.css"
+import { useHistory } from "react-router";
 
 export const Steps = (props) => {
+    const history = useHistory()
 // sets state for input field array to add/subtract steps
     const [inputFields, setInputField] = useState([
         {
@@ -24,7 +26,8 @@ export const Steps = (props) => {
         ])
     }
     // deletes step
-    const handleDeleteFields = () => {
+    const handleDeleteFields = (e) => {
+        e.preventDefault()
         const values = [...inputFields]
         values.pop()
         setInputField(values)
@@ -97,7 +100,7 @@ export const Steps = (props) => {
                         onClick={() => handleAddFields()}
                     >+</button>
                     <button className="delete-step"
-                        onClick={() => handleDeleteFields()}
+                        onClick={(e) => handleDeleteFields(e)}
                     >-</button>
                     </div>
         </fieldset>

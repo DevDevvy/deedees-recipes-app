@@ -20,9 +20,10 @@ export const Ingredients = (props) => {
         ])
     }
     // deletes step from input field
-    const handleDeleteFields = (index) => {
+    const handleDeleteFields = (e) => {
+        e.preventDefault()
         const values = [...inputFields]
-        values.splice(index, 1)
+        values.pop()
         setInputField(values)
     }
 
@@ -110,7 +111,7 @@ export const Ingredients = (props) => {
                         onClick={() => handleAddFields()}
                     >+</button>
                     <button className="delete-step"
-                        onClick={() => handleDeleteFields()}
+                        onClick={(e) => handleDeleteFields(e)}
                     >-</button>
                 </div>
             </fieldset>
