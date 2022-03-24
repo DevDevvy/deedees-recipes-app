@@ -107,7 +107,31 @@ a {
     width: 2em;
     /* converts black svg into red */
     filter: invert(57%) sepia(14%) saturate(4851%) hue-rotate(308deg) brightness(91%) contrast(98%);
+    
 }
+.favorite-button:active {
+    animation: dot-expander 1s;
+    animation-fill-mode: forwards;
+    width: 2em;
+    /* converts black svg into red */
+    filter: invert(57%) sepia(14%) saturate(4851%) hue-rotate(308deg) brightness(91%) contrast(98%);
+}
+@keyframes dot-expander {
+    0% {
+      
+      transform: scale(1);
+    }
+  
+    50% {
+    
+      transform: scale(2.5);
+    }
+  
+    100% {
+      
+      transform: scale(1);
+    }
+  }
 
 .postButtons {
     display: flex;

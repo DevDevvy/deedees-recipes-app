@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import "./RecipeList.css"
 import hollow from "./hollow.svg"
@@ -15,8 +14,8 @@ export const RecipeList = () => {
     const [likesArray, setLikes] = useState([])
     const [steps, setSteps] = useState([])
     const [ratings, setRatings] = useState([])
-    const history = useHistory()
-
+    const [foundMax, setFoundMax] = useState({})
+    
 // use effect fetches recipes with expanded users from API
     useEffect(
         () => {
@@ -47,6 +46,39 @@ export const RecipeList = () => {
         },
         []
     )
+    // MEMOIZATION to find top "liked" post
+    useEffect(
+        () => {
+            const likeList = {}
+        if (likesArray.length != 0) {
+            
+            for (const like of likesArray) {
+            if (like.recipeId in likeList) {
+                likeList[like.recipeId] = likeList[like.recipeId] + 1
+            }
+            else {
+                likeList[like.recipeId] = 1
+            }
+            
+            }
+            let foundMax = {
+                maxRecipeId: 0,
+                maxRecipeCount: 0
+            }
+            for (let key in likeList) {
+                if (likeList[key] > foundMax.maxRecipeCount) {
+                    foundMax.maxRecipeId = key
+                    foundMax.maxRecipeCount = likeList[key]
+                }
+            }
+            
+            setFoundMax(foundMax)
+        }
+        },
+        [likesArray]
+    )
+    const topLikedRecipe = recipes.find(recipe => recipe.id === parseInt(foundMax.maxRecipeId))
+
         // function to send new "like" object into API
     const likeRecipe = (id) => {
         // make new like object
@@ -84,6 +116,11 @@ export const RecipeList = () => {
         <section className="main-container">
             <div className="recipe-list-header">
                 <h3 className="recipe-title">Recipes</h3>
+                
+                <Link className="most-liked" data-aos="fade" 
+                    to={`/recipes/${topLikedRecipe?.id}`} 
+                    >Most liked recipe: {topLikedRecipe?.name}
+                </Link>
             </div>
             <section className="recipe-container">
             {
