@@ -25,6 +25,7 @@ export const SearchBar = () => {
                         <div className="form-group">
                             
                             <input
+                            autoFocus
                                 type="text"
                                 className="search-control"
                                 placeholder="Search here..."

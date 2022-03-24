@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router";
-import { Steps } from "../recipes/Steps";
+
 // create a function that lists out all the recipes in XML
 export const EditRecipe = () => {
     // create recipe state
     const [recipe, setRecipe] = useState({})
     const [steps, setSteps] = useState([])
     const [ingredients, setIngredients] = useState([])
-    const [inputFields, setInputFieldSteps] = useState([])
+    
     const history = useHistory()
     const {recipeId} = useParams()
     // recipe with user, steps, ingredients
@@ -79,7 +79,7 @@ export const EditRecipe = () => {
         // push user back to home page after all objects are sent
         history.push("/home")
     }
-
+// if ingredient doesnt have an id send it to the api with a post-------------
     const editIngredients = (ingredient) => {
             // use fetch method POST to send object into API
             const singleIngredient = ingredient
