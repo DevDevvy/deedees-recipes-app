@@ -150,7 +150,7 @@ export const ForkRecipe = () => {
         saveIngredients(ingredient);
     }
     // push user back to home page after all objects are sent
-    history.push("/home");
+    history.push(`/recipes/${recipeId}`);
     };
     
     return (
