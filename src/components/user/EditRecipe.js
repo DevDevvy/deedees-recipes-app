@@ -8,6 +8,7 @@ export const EditRecipe = () => {
     const [recipe, setRecipe] = useState({})
     const [steps, setSteps] = useState([])
     const [ingredients, setIngredients] = useState([])
+    const [inputFields, setInputFieldSteps] = useState([])
     const history = useHistory()
     const {recipeId} = useParams()
     // recipe with user, steps, ingredients
@@ -94,6 +95,42 @@ export const EditRecipe = () => {
                 
             
     }
+    const handleAddFieldsSteps = () => {
+        setSteps([
+            ...steps,
+            {
+            step: "",
+            stepNumber: steps.length + 1,
+            recipeId: undefined,
+            minutes: undefined,
+            },
+        ]);
+        };
+    // deletes step
+    const handleDeleteFields = (e) => {
+        debugger
+        e.preventDefault()
+        const values = [...steps]
+        values.pop()
+        setSteps(values)
+    }
+      // adds empty field for ingredients
+    const handleAddFieldsIngredients = () => {
+        setIngredients([
+            ...ingredients,
+            {
+                name: "",
+                amount: "",
+            },
+        ]);
+        };
+      // deletes ingredient
+        const handleDeleteFieldsIngredients = (event) => {
+        event.preventDefault();
+        const values = [...ingredients];
+        values.pop();
+        setIngredients(values);
+        };
     return (
         <>
             <form className="recipe-form">
@@ -183,6 +220,15 @@ export const EditRecipe = () => {
                         />
                     </div>
                 })}
+                <div className="ing-buttons">
+                    {/* add/delete field buttons */}
+                    <button className="add-step"
+                        onClick={() => handleAddFieldsSteps()}
+                    >+</button>
+                    <button className="delete-step"
+                        onClick={(e) => handleDeleteFields(e)}
+                    >-</button>
+                </div>
             </fieldset>
             <fieldset>
                 <h3>Ingredients</h3>
@@ -232,6 +278,19 @@ export const EditRecipe = () => {
                             
                     </div>
                 ))}
+                <div className="button-container">
+                    <button
+                        className="add-step"
+                        onClick={(event) => handleAddFieldsIngredients(event)}
+                    >+
+                    </button>
+                    <button
+                        className="delete-step"
+                        onClick={(event) => handleDeleteFieldsIngredients(event)}
+                    >-
+                    </button>
+                    
+                </div>
             </fieldset>
             
             <button type="button" className="btn btn-primary" id="save-recipe" onClick={()=> editRecipe(recipeId)}>
