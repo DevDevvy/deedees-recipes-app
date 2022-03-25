@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router";
+import { saveIngredients, saveSteps } from "../../ApiManager";
 
 // create a function that lists out all the recipes in XML
 export const EditRecipe = () => {
@@ -36,7 +37,6 @@ export const EditRecipe = () => {
             photo: recipe.photo,
             userId: parseInt(localStorage.getItem("recipe_user"))
         }
-        // use fetch method POST to send object into API
         const fetchOption = {
             method: "PUT",
             headers: {
@@ -47,12 +47,15 @@ export const EditRecipe = () => {
         return fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${id}`, fetchOption)
         // after recipe put, trigger steps
             .then(sendSteps)
-            
     }
     // iterates through steps list to send to API one by one
     const sendSteps = () => {
         for (const singleStep of steps) {
-            editSteps(singleStep)
+            if (singleStep.id) {
+                editSteps(singleStep)
+            } else {
+                saveSteps(singleStep)
+            }
         }
         // after all steps post, trigger sendIngredients
         sendIngredients()
@@ -74,9 +77,12 @@ export const EditRecipe = () => {
     // iterate through all ingredients to send to API
     const sendIngredients = () => {
         for (const ingredient of ingredients) {
-            editIngredients(ingredient)
+            if (ingredient.id) {
+                editIngredients(ingredient)
+            } else {
+                saveIngredients(ingredient)
+            }
         }
-        // push user back to home page after all objects are sent
         history.push("/home")
     }
 // if ingredient doesnt have an id send it to the api with a post-------------
@@ -101,14 +107,13 @@ export const EditRecipe = () => {
             {
             step: "",
             stepNumber: steps.length + 1,
-            recipeId: undefined,
+            recipeId: parseInt(recipeId),
             minutes: undefined,
             },
         ]);
         };
     // deletes step
     const handleDeleteFields = (e) => {
-        debugger
         e.preventDefault()
         const values = [...steps]
         values.pop()
@@ -121,6 +126,7 @@ export const EditRecipe = () => {
             {
                 name: "",
                 amount: "",
+                recipeId: parseInt(recipeId)
             },
         ]);
         };

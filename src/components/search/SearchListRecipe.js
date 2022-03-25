@@ -45,7 +45,7 @@ export const RecipeListSearch = (props) => {
         })
         .then(update)
     }
-
+    // updates state to show new like
     const update = () => {
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/likes?_expand=user")
             .then(res => res.json())

@@ -31,7 +31,6 @@ export const ForkRecipe = () => {
         forkedRecipeId: forkedRecipes.length + 1
         },
     ]);
-    
     };
   // deletes step 
     const handleDeleteFieldsSteps = (event, index) => {
@@ -113,6 +112,7 @@ export const ForkRecipe = () => {
         .then(clearIds)
         .then(sendSteps);
     };
+    // clears id keys off of steps/ingredients objets to send back into API
     const clearIds = () => {
         steps.forEach(step => {
             if (step.id) {
