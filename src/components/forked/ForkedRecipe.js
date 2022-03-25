@@ -32,9 +32,9 @@ export const ForkedRecipeList = ({users}) => {
                 if (recipe.forkedFromId === parseInt(recipeId)) {
                     
                 // filter all steps for recipe
-                const foundSteps = forkedSteps.filter(step => step.recipeId === recipe.id)
+                const foundSteps = forkedSteps.filter(step => step.recipeId === parseInt(recipeId) && step.forkedRecipeId === recipe.id)
                 // filter ingredients for recipe
-                const foundIngredients = forkedIngredients.filter(ingredient => ingredient.recipeId === recipe.id)
+                const foundIngredients = forkedIngredients.filter(ingredient => ingredient.recipeId === parseInt(recipeId) && ingredient.forkedRecipeId === recipe.id)
                 // find user for post
                 const foundUser = users?.find(user => user.id === recipe.userId)
                 // put steps list in order for final output

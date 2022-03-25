@@ -1,6 +1,6 @@
 
 
-export const ForkedIngredients = ({ingredients, setIngredients, handleDeleteFieldsIngredients}) => {
+export const ForkedIngredients = ({ingredients, setIngredients, forkedRecipes}) => {
 
     return <>
     {ingredients.map((ingr, index) => (
@@ -19,6 +19,7 @@ export const ForkedIngredients = ({ingredients, setIngredients, handleDeleteFiel
             onChange={(evt) => {
             // copy state
                 const copy = [...ingredients];
+                
                 copy[index].name = evt.target.value;
                 setIngredients(copy);
             }}

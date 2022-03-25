@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
-import { getAllForkedRecipes } from "../../ApiManager";
+import { getAllForkedIngredients, getAllForkedRecipes, getAllForkedSteps, getAllRecipes } from "../../ApiManager";
 import "./ForkRecipe.css"
 import { ForkedIngredients } from "./ForkIngredients";
 import { ForkedSteps } from "./ForkSteps";
@@ -10,9 +10,12 @@ import { ForkedSteps } from "./ForkSteps";
 export const ForkRecipe = () => {
   // create recipe state
     const [recipe, setRecipe] = useState({});
+    const [recipes, setRecipes] = useState([])
     const [steps, setSteps] = useState([]);
     const [ingredients, setIngredients] = useState([]);
+    const [allIngredients, setAllIngredients] = useState([])
     const [forkedRecipes, setForkedRecipes] = useState([])
+    const [allSteps, setAllSteps] = useState([])
     const history = useHistory();
     const { recipeId } = useParams();
 
@@ -23,12 +26,13 @@ export const ForkRecipe = () => {
         {
         step: "",
         stepNumber: steps.length + 1,
-        recipeId: undefined,
-        minutes: undefined,
+        recipeId: parseInt(recipeId),
+        minutes: null,
+        forkedRecipeId: forkedRecipes.length + 1
         },
     ]);
+    
     };
-
   // deletes step 
     const handleDeleteFieldsSteps = (event, index) => {
     event.preventDefault()
@@ -43,6 +47,8 @@ export const ForkRecipe = () => {
         {
             name: "",
             amount: "",
+            recipeId: parseInt(recipeId),
+            forkedRecipeId: forkedRecipes.length + 1
         },
     ]);
     };
@@ -74,10 +80,13 @@ export const ForkRecipe = () => {
         () => {
             
             getAllForkedRecipes()
-                .then((data) => {
-                    // set recipe state with data from API
-                    setForkedRecipes(data)
-                })
+                .then((data) => {setForkedRecipes(data)})
+                .then(getAllRecipes)
+                .then((data) => {setRecipes(data)})
+                .then(getAllForkedSteps)
+                .then((data) => {setAllSteps(data)})
+                .then(getAllForkedIngredients)
+                .then((data) => {setAllIngredients(data)})
         },
         []
     )
@@ -101,13 +110,25 @@ export const ForkRecipe = () => {
             body: JSON.stringify(newRecipe),
         };
         return fetch("https://deedees-api-qdte8.ondigitalocean.app/forkedRecipes", fetchOption)
-            .then(sendSteps);
+        .then(clearIds)
+        .then(sendSteps);
     };
+    const clearIds = () => {
+        steps.forEach(step => {
+            if (step.id) {
+                delete step['id']
+            }
+        })
+        ingredients.forEach(ing => {
+            if (ing.id) {
+                delete ing['id']
+            }
+        })
+    }
   // sends object to API
     const saveSteps = (step) => {
         // use fetch method POST to send object into API
-        step.recipeId = forkedRecipes.length + 1
-        
+        step.forkedRecipeId = forkedRecipes.length + 1
         const fetchOption = {
             method: "POST",
             headers: {
@@ -121,6 +142,7 @@ export const ForkRecipe = () => {
   // save ingredients
     const saveIngredients = (ingredient) => {
     // use fetch method POST to send object into API
+    ingredient.forkedRecipeId = forkedRecipes.length + 1
     const fetchOption = {
         method: "POST",
         headers: {
@@ -135,7 +157,6 @@ export const ForkRecipe = () => {
     const sendSteps = () => {
     // iterate through steps to send one by one to API
     for (const singleStep of steps) {
-        
       // send single step to function
         saveSteps(singleStep);
     }
@@ -146,7 +167,6 @@ export const ForkRecipe = () => {
   // iterate through all ingredients to send to API
     const sendIngredients = () => {
     for (const ingredient of ingredients) {
-        ingredient.recipeId = forkedRecipes.length + 1
         saveIngredients(ingredient);
     }
     // push user back to home page after all objects are sent
@@ -188,6 +208,9 @@ export const ForkRecipe = () => {
                     steps={steps}
                     setSteps={setSteps}
                     handleDeleteFieldsSteps={handleDeleteFieldsSteps}
+                    recipes={recipes}
+                    forkedRecipes={forkedRecipes}
+                    allSteps={allSteps}
                     />
                     <div className="button-container">
                         <button
@@ -208,18 +231,18 @@ export const ForkRecipe = () => {
                 ingredients={ingredients}
                 setIngredients={setIngredients}
                 handleDeleteFieldsIngredients={handleDeleteFieldsIngredients}
+                forkedRecipes={forkedRecipes}
+                allIngredients={allIngredients}
             />
                 <div className="button-container">
                     <button
                         className="delete-step"
                         onClick={(event) => handleDeleteFieldsIngredients(event)}
-                    >-
-                    </button>
+                    >-</button>
                     <button
                         className="add-step"
                         onClick={(event) => handleAddFieldsIngredients(event)}
-                    >+
-                    </button>
+                    >+</button>
                     
                 </div>
             </fieldset>
