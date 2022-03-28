@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
 
 
-export const ForkedSteps = ({steps, setSteps, forkedRecipes, allSteps}) => {
-    const {recipeId} = useParams()
+export const ForkedSteps = ({steps, setSteps}) => {
+    
     return <>
     {steps.map((stp, index) => {
                 return (

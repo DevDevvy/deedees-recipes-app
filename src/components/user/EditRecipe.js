@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useHistory } from "react-router";
-import { saveIngredients, saveSteps } from "../../ApiManager";
+import { apiDeleteIngredient, saveIngredients, saveSteps } from "../../ApiManager";
 
 // create a function that lists out all the recipes in XML
 export const EditRecipe = () => {
@@ -149,16 +149,11 @@ export const EditRecipe = () => {
                         required 
                         type="text"
                         className="memory"
-                        // gets value from state to display in edit window
                         value={recipe.memory}
-                        // listens for state change
                         onChange={
                             (evt) => {
-                                // copy state
                                 const copy = {...recipe}
-                                // modify copy of state with user input value
                                 copy.memory = evt.target.value
-                                // update state with new state
                                 setRecipe(copy)
                             }
                         } />
@@ -173,14 +168,10 @@ export const EditRecipe = () => {
                         type="text"
                         className="form-photo"
                         value={recipe.photo}
-                        // listens for state change
                         onChange={
                             (evt) => {
-                                // copy state
                                 const copy = {...recipe}
-                                // modify copy of state with user input value
                                 copy.photo = evt.target.value
-                                // update state with new state
                                 setRecipe(copy)
                             }
                         } />
@@ -198,7 +189,6 @@ export const EditRecipe = () => {
                         step="0.1"
                         className="number"
                         value={steps[index].minutes}
-                        // listens for state change
                         onChange={
                             (evt) => {
                                 const copy = [...steps]
@@ -213,7 +203,6 @@ export const EditRecipe = () => {
                         type="text"
                         className="step"
                         value={steps[index].step}
-                        // listens for state change
                         onChange={
                             (evt) => {
                                 // copy state
@@ -244,14 +233,11 @@ export const EditRecipe = () => {
                         <input
                             required 
                             type="text"
-                            // key passed in to object will be "name"
                             name="name"
-                            // makes value passed into object equal to current state
                             value={ingredients[index].name}
                             className="ingredient"
                             placeholder={`Ingredient ${index + 1}`}
                             id={`Ingredient${index + 1}`}
-                            // listens for state change
                             onChange={
                                 (evt) => {
                                     // copy state
@@ -265,16 +251,12 @@ export const EditRecipe = () => {
                             required 
                             type="text"
                             className="amount"
-                            // so key passed into object will be "amount"
                             placeholder="Amount"
                             name="amount"
-                            // makes value passed into object equal to current state
                             value={ingredients[index].amount}
                             id="amount1"
-                            // listens for state change
                             onChange={
                                 (evt) => {
-                                    // copy state
                                     const copy = [...ingredients]
                                     copy[index].amount = evt.target.value
                                     setIngredients(copy)
@@ -302,6 +284,7 @@ export const EditRecipe = () => {
             <button type="button" className="btn btn-primary" id="save-recipe" onClick={()=> editRecipe(recipeId)}>
                 Edit Recipe
             </button>
+            
         </form>
         </>
     )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router";
-import { getAllForkedIngredients, getAllForkedRecipes, getAllForkedSteps, getAllRecipes } from "../../ApiManager";
+import { getAllForkedIngredients, getAllForkedRecipes, getAllForkedSteps, getAllRecipes, getUserRecipe } from "../../ApiManager";
 import "./ForkRecipe.css"
 import { ForkedIngredients } from "./ForkIngredients";
 import { ForkedSteps } from "./ForkSteps";
@@ -62,8 +62,7 @@ export const ForkRecipe = () => {
     // -------api calls------------------------
   // recipe with user, steps, ingredients
     useEffect(() => {
-    fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${recipeId}?_expand=user&_embed=steps&_embed=ingredients`)
-        .then((res) => res.json())
+    getUserRecipe(recipeId)
         .then((data) => {
             setSteps(data.steps);
             setIngredients(data.ingredients);
@@ -126,7 +125,7 @@ export const ForkRecipe = () => {
         })
     }
   // sends object to API
-    const saveSteps = (step) => {
+    const saveForkedSteps = (step) => {
         // use fetch method POST to send object into API
         step.forkedRecipeId = forkedRecipes.length + 1
         const fetchOption = {
@@ -155,10 +154,8 @@ export const ForkRecipe = () => {
 
   // iterates through steps list to send to API one by one
     const sendSteps = () => {
-    // iterate through steps to send one by one to API
     for (const singleStep of steps) {
-      // send single step to function
-        saveSteps(singleStep);
+        saveForkedSteps(singleStep);
     }
     // after all steps post, trigger sendIngredients
     sendIngredients();
@@ -169,7 +166,7 @@ export const ForkRecipe = () => {
     for (const ingredient of ingredients) {
         saveIngredients(ingredient);
     }
-    // push user back to home page after all objects are sent
+    // push user back to recipe page
     history.push(`/recipes/${recipeId}`);
     };
     
@@ -180,72 +177,54 @@ export const ForkRecipe = () => {
             <fieldset>
             {/* ------recipe memory------------ */}
                 <div className="form-group-recipe">
-                <h3 className="memory-title">Memory/Message:</h3>
-                <textarea
-                    
-                    type="text"
-                    placeholder="Memory or story here..."
-                    className="memory"
-                // gets value from state to display in edit window
-                    value={recipe.memory}
-                // listens for state change
-                    onChange={(evt) => {
-                    // copy state
-                    const copy = { ...recipe };
-                    // modify copy of state with user input value
-                    copy.memory = evt.target.value;
-                    // update state with new state
-                    setRecipe(copy);
-                    }}
-                />
+                    <h3 className="memory-title">Memory/Message:</h3>
+                    <textarea
+                        type="text"
+                        placeholder="Memory or story here..."
+                        className="memory"
+                        value={recipe.memory}
+                        onChange={(evt) => {
+                        const copy = { ...recipe };
+                        copy.memory = evt.target.value;
+                        setRecipe(copy);
+                        }}
+                    />
                 </div>
             </fieldset>
             <div className="steps-ingredients-container">
-            <div className="step-container">
-            <fieldset className="steps-container">
-                <h3>Steps</h3>
-                <ForkedSteps
-                    steps={steps}
-                    setSteps={setSteps}
-                    handleDeleteFieldsSteps={handleDeleteFieldsSteps}
-                    recipes={recipes}
-                    forkedRecipes={forkedRecipes}
-                    allSteps={allSteps}
-                    />
+                <div className="step-container">
+                <fieldset className="steps-container">
+                    <h3>Steps</h3>
+                    <ForkedSteps
+                        steps={steps}
+                        setSteps={setSteps}
+                        />
                     <div className="button-container">
-                        <button
-                            className="delete-step"
+                        <button className="delete-step"
                             onClick={(e, index) => handleDeleteFieldsSteps(e, index)}
-                            >-</button>
-                        <button 
-                            className="add-step" 
+                        >-</button>
+                        <button className="add-step" 
                             onClick={(e) => handleAddFieldsSteps(e)}
-                            >+</button>
+                        >+</button>
                     </div>
                 </fieldset>
             </div>
             <div className="step-container">
-            <fieldset className="steps-container">
-                <h3>Ingredients</h3>
-            <ForkedIngredients
-                ingredients={ingredients}
-                setIngredients={setIngredients}
-                handleDeleteFieldsIngredients={handleDeleteFieldsIngredients}
-                forkedRecipes={forkedRecipes}
-                allIngredients={allIngredients}
-            />
-                <div className="button-container">
-                    <button
-                        className="delete-step"
-                        onClick={(event) => handleDeleteFieldsIngredients(event)}
-                    >-</button>
-                    <button
-                        className="add-step"
-                        onClick={(event) => handleAddFieldsIngredients(event)}
-                    >+</button>
-                    
-                </div>
-            </fieldset>
+                <fieldset className="steps-container">
+                    <h3>Ingredients</h3>
+                    <ForkedIngredients
+                        ingredients={ingredients}
+                        setIngredients={setIngredients}
+                    />
+                    <div className="button-container">
+                        <button className="delete-step"
+                            onClick={(event) => handleDeleteFieldsIngredients(event)}
+                        >-</button>
+                        <button className="add-step"
+                            onClick={(event) => handleAddFieldsIngredients(event)}
+                        >+</button>
+                    </div>
+                </fieldset>
             </div>
             </div>
             <button
@@ -256,7 +235,7 @@ export const ForkRecipe = () => {
             >
                 Send Recipe!
             </button>
-    </form>
+        </form>
     </>
 );
 };

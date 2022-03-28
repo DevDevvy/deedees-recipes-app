@@ -1,6 +1,5 @@
 
 
-
 export const getAllComments = () => {
     return fetch(`https://deedees-api-qdte8.ondigitalocean.app/comments?_expand=user`)
         .then(res => res.json())
@@ -14,8 +13,8 @@ export const getAllIngredients = () => {
     return fetch(`https://deedees-api-qdte8.ondigitalocean.app/ingredients`)
         .then(res => res.json())
 }
-export const getUserRecipe = (id) => {
-    return fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${id}?_expand=user`)
+export const getUserRecipe = (recipeId) => {
+    return fetch(`https://deedees-api-qdte8.ondigitalocean.app/recipes/${recipeId}?_expand=user&_embed=steps&_embed=ingredients`)
         .then(res => res.json())
 }
 export const getAllRecipes = () => {
@@ -57,6 +56,12 @@ export const getAllRatings = () => {
 }
 export const apiDelete = (id) => {
     return fetch(`https://deedees-api-qdte8.ondigitalocean.app/likes/${id}`, {
+        method: "DELETE"
+    })
+}
+
+export const apiDeleteIngredient = (id) => {
+    return fetch(`https://deedees-api-qdte8.ondigitalocean.app/ingredients/${id}`, {
         method: "DELETE"
     })
 }

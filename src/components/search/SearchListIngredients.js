@@ -35,7 +35,8 @@ export const SearchListIngredients = (props) => {
                         // find recipe for each ingredient found
                         const foundRecipe = recipes.find(recipe => recipe.id === ingredient.recipeId)
                         // filters out all ingredients found for the recipe found
-                        const ingredientArray = ingredients.filter(ingredient => ingredient.recipeId === foundRecipe.id)
+                        const ingredientArray = ingredients?.filter(ingredient => ingredient.recipeId === foundRecipe.id)
+                        
                         
                         if (name.includes(inputLower)) {
                             return <div key={`ingredient--${ingredient.id}`} className="recipe-div">

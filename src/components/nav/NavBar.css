@@ -48,11 +48,7 @@
 }
 
 .app-title {
-    text-align: center;
-    font-size: 7vw;
-    text-shadow: 4px 4px 4px #999988;
-    color: rgb(59, 51, 45);
-    margin-top: 25px;
+    width: 40vw;
 }
 
 #logout {
@@ -74,4 +70,9 @@
 
 .navbar__link {
     color: rgb(77, 40, 15);
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
 }

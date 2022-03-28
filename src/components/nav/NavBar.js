@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css"
-import logo from "./deedees-recipes-logo.png"
+import logo from "./deedees-recipes-logo.svg"
 
 export const NavBar = () => {
     
@@ -16,7 +16,10 @@ export const NavBar = () => {
                             localStorage.removeItem("recipe_user")
                         }}>Logout</Link>
             </div>
-            <h1 className="app-title">DeeDee's Recipes</h1>
+            {/* <h1 className="app-title">DeeDee's Recipes</h1> */}
+            <div className="title-container">
+            <img className="app-title" src={logo} alt="Deedee's recipes logo"/>
+            </div>
             <ul className="navbar">
                 <li className="navbar__item active">
                     <Link className="navbar__link" to="/home">My Recipes</Link>
