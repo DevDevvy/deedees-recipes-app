@@ -18,7 +18,13 @@ export const NavBar = () => {
             </div>
             {/* <h1 className="app-title">DeeDee's Recipes</h1> */}
             <div className="title-container">
-            <img className="app-title" src={logo} alt="Deedee's recipes logo"/>
+                <div className="inner-title-container">
+                    <div className="div-a">
+                    <div className="div-b">
+                    <img className="app-title" src={logo} alt="Deedee's recipes logo"/>
+                    </div>
+                    </div>
+                </div>
             </div>
             <ul className="navbar">
                 <li className="navbar__item active">
