@@ -1,0 +1,17 @@
+.about {
+    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+    padding: 1em;
+    margin: 1em
+}
+
+.list-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.hello-list {
+    box-shadow: 0.3rem 0.3rem 0.6rem rgb(172, 169, 169), -0.2rem -0.3rem 0.5rem rgb(255, 255, 255);
+    padding: 10px;
+    margin: 10px;
+}

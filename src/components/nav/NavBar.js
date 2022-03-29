@@ -21,7 +21,9 @@ export const NavBar = () => {
                 <div className="inner-title-container">
                     <div className="div-a">
                     <div className="div-b">
+                    <Link to="/hello">
                     <img className="app-title" src={logo} alt="Deedee's recipes logo"/>
+                    </Link>
                     </div>
                     </div>
                 </div>
