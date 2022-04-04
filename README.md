@@ -1,3 +1,5 @@
+
+
 <div id="top"></div>
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
@@ -24,10 +26,11 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  
-    
 
+<div align="center" >
+  <div>
+    <img align="center" src="https://deedees-recipes-plyms.ondigitalocean.app/static/media/deedees-recipes-logo.86ee886898fc4802dec68fdfb18c39dd.svg"/> 
+  </div>
 <h3 align="center">DeeDee's Recipes</h3>
 
   <p align="center">
