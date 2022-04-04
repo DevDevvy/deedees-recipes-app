@@ -58,7 +58,7 @@
 .logout-search-container {
     display: flex;
     justify-content: space-between;
-    height: 2em;
+    height: auto;
     width: 100%;
 }
 
