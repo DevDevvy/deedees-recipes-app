@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { SearchBar } from "./Search";
 import { Link } from "react-router-dom";
 import hollow from "../recipes/hollow.svg"
 import solid from "../recipes/solid.svg"
