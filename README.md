@@ -38,7 +38,7 @@
     <a href="https://github.com/DevDevvy/deedees-recipes-app"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/DevDevvy/deedees-recipes-app">View Demo</a>
+    <a href="https://deedees-recipes-plyms.ondigitalocean.app/">View Live App</a>
     ·
     <a href="https://github.com/DevDevvy/deedees-recipes-app/issues">Report Bug</a>
     ·
