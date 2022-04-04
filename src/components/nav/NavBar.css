@@ -49,6 +49,7 @@
 
 .app-title {
     width: 54vw;
+    filter: invert(22%) sepia(16%) saturate(0%) hue-rotate(148deg) brightness(105%) contrast(86%);
 }
 
 #logout {
