@@ -1,5 +1,3 @@
-import { useParams } from "react-router";
-
 
 export const ForkedSteps = ({steps, setSteps}) => {
     
